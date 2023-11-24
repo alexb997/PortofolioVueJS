@@ -31,11 +31,18 @@ public class ProjectService {
 
     public Project update(Project project)
     {
+        
         Project oldProject = projectRepository.findById(project.getId()).orElse(null);
         oldProject.setDescription(project.getDescription());
         oldProject.setName(project.getName());
         oldProject.setImgUrl(project.getImgUrl());
         oldProject.setStatus(project.getStatus());
+        // oldProject= Project.builder()
+        //     .id(project.getId())
+        //     .name(project.getName())
+        //     .imgUrl(project.getImgUrl())
+        //     .status(project.getStatus())
+        //     .build();
         return projectRepository.save(oldProject);
     }
 

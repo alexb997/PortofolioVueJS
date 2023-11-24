@@ -14,19 +14,19 @@
         </div>
         <fieldset class="form-group">
           <label>Name</label>
-          <input type="text" class="form-control" v-model="Name" />
+          <input type="text" class="form-control" v-model="name" />
         </fieldset>
         <fieldset class="form-group">
           <label>Description</label>
-          <input type="text" class="form-control" v-model="Description" />
+          <input type="text" class="form-control" v-model="description" />
         </fieldset>
         <fieldset class="form-group">
           <label>ImgUrl</label>
-          <input type="text" class="form-control" v-model="ImgUrl" />
+          <input type="text" class="form-control" v-model="imgUrl" />
         </fieldset>
         <fieldset class="form-group">
           <label>Status</label>
-          <input type="text" class="form-control" v-model="Status" />
+          <input type="text" class="form-control" v-model="status" />
         </fieldset>
         <button class="btn btn-success" type="submit">Save</button>
       </form>
@@ -66,10 +66,10 @@ export default {
       this.errors = [];
       if (this.id == -1) {
         ProjectDataService.createProject({
-          name: this.Name,
-          description: this.Description,
-          imgUrl: this.ImgUrl,
-          status: this.Status,
+          name: this.name,
+          description: this.description,
+          imgUrl: this.imgUrl,
+          status: this.status,
         }).then(() => {
           this.$router.push("/projects");
         });
