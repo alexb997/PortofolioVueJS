@@ -8,7 +8,7 @@
           <tr>
             <th>Name</th>
             <th>Description</th>
-            <th>Email Id</th>
+            <th>Image Url</th>
             <th>Status</th>
             <th>Update</th>
             <th>Delete</th>

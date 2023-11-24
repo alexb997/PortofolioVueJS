@@ -18,14 +18,5 @@ public class Project {
     private String description;
     private String imgUrl;
     private String status;
-
-    public Project(Long id, String name, String description, String imgUrl, String status) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.imgUrl = imgUrl;
-        this.status = status;
-
-    }
             
 }

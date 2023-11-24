@@ -66,10 +66,10 @@ export default {
       this.errors = [];
       if (this.id == -1) {
         ProjectDataService.createProject({
-          name: this.name,
-          description: this.description,
-          imgUrl: this.imgUrl,
-          status: this.status,
+          name: this.Name,
+          description: this.Description,
+          imgUrl: this.ImgUrl,
+          status: this.Status,
         }).then(() => {
           this.$router.push("/projects");
         });
