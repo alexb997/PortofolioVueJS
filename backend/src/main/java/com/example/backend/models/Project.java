@@ -1,0 +1,31 @@
+package com.example.backend.models;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Project {
+    
+    @Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    private String name;
+    private String description;
+    private String imgUrl;
+    private String status;
+
+    public Project(Long id, String name, String description, String imgUrl, String status) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.imgUrl = imgUrl;
+        this.status = status;
+
+    }
+            
+}

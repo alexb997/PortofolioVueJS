@@ -1,0 +1,7 @@
+CREATE TABLE Project (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  description VARCHAR(255),
+  imgUrl VARCHAR(255),
+  status VARCHAR(255)
+);
