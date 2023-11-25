@@ -1,6 +1,6 @@
 <template>
     <div class="navigation">
-        <b-navbar toggleable="lg" type="dark" variant="dark">
+        <b-navbar toggleable="lg" type="dark" variant="dark" fixed="top">
             <b-navbar-brand href="#">Portofolio</b-navbar-brand>
 
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -30,7 +30,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+    .navbar.navbar-dark.bg-dark{
+        background-color: rgba(0, 0, 0, 0.137)!important;
+    }
     .navigation{
         position: relative;
         z-index: 1;
