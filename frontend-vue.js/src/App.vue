@@ -13,13 +13,19 @@
         <li></li>
         <li></li>
       </ul>
+      <NavBar />
       <router-view />
     </Col>
   </div>
 </template>
 
 <script>
+import NavBar from "./components/NavBar.vue";
+
 export default {
+  components: {
+    NavBar,
+  },
   name: "app",
 };
 </script>
