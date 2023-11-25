@@ -1,9 +1,20 @@
 <template>
-  <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Portofolio Application</a><br /><br />
-    </div>
-    <router-view />
+  <div class=" area">
+    <Col class="page">
+      <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <router-view />
+    </Col>
   </div>
 </template>
 
@@ -15,4 +26,5 @@ export default {
 
 <style>
 @import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);
+@import url(./App.css);
 </style>

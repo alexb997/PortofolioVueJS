@@ -6,19 +6,18 @@
 
       <div>
         <h2>Or send me a mail:</h2>
-        <Button class="sendMailButton"></Button>
+        <!-- <Button class="sendMailButton"></Button> -->
       </div>
     </Container>
   </section>
 </template>
 
 <script>
-import { Container, Button } from "bootstrap-vue";
+import { Container } from "bootstrap-vue";
 
 export default {
   components: {
     Container,
-    Button,
   },
 };
 </script>
