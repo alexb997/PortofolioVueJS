@@ -21,6 +21,11 @@ const router = new Router({
       name: "Project",
       component: () => import("./components/Project"),
     },
+    {
+      path: "/admin",
+      name: "Admin",
+      component: () => import("./components/Admin"),
+    },
   ],
 });
 
