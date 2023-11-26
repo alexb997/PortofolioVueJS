@@ -12,14 +12,14 @@ const router = new Router({
       component: () => import("./components/Home"),
     },
     {
-      path: "/Project/:id",
-      name: "Project",
-      component: () => import("./components/Project"),
-    },
-    {
       path: "/Projects",
       name: "Projects",
       component: () => import("./components/Projects"),
+    },
+    {
+      path: "/Project/:id",
+      name: "ProjectDetails",
+      component: () => import("./components/ProjectDetails"),
     },
     {
       path: "/admin",
@@ -37,7 +37,12 @@ const router = new Router({
       component: () => import("./components/AdminPosts"),
     },
     {
-      path: "/Post/:id",
+      path: "/admin/Project/:id",
+      name: "Project",
+      component: () => import("./components/Project"),
+    },
+    {
+      path: "admin/Post/:id",
       name: "Post",
       component: () => import("./components/Post"),
     },
