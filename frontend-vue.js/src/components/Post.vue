@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>Project</h3>
+    <h3>Post</h3>
     <div class="container">
       <form @submit="validateAndSubmit">
         <div v-if="errors.length">
@@ -13,20 +13,16 @@
           </div>
         </div>
         <fieldset class="form-group">
-          <label>Name</label>
-          <input type="text" class="form-control" v-model="name" />
+          <label>Title</label>
+          <input type="text" class="form-control" v-model="title" />
         </fieldset>
         <fieldset class="form-group">
           <label>Description</label>
           <input type="text" class="form-control" v-model="description" />
         </fieldset>
         <fieldset class="form-group">
-          <label>ImgUrl</label>
-          <input type="text" class="form-control" v-model="imgUrl" />
-        </fieldset>
-        <fieldset class="form-group">
-          <label>Status</label>
-          <input type="text" class="form-control" v-model="status" />
+          <label>Project</label>
+          <input type="text" class="form-control" v-model="project" />
         </fieldset>
         <button class="btn btn-success" type="submit">Save</button>
       </form>
@@ -34,16 +30,15 @@
   </div>
 </template>
 <script>
-import ProjectDataService from "../service/ProjectDataService";
+import PostDataService from "../service/PostDataService";
 
 export default {
-  name: "Project",
+  name: "Post",
   data() {
     return {
-      name: "",
+      title: "",
       description: "",
-      imgUrl: "",
-      status: "",
+      project: "",
       errors: [],
     };
   },
@@ -53,41 +48,38 @@ export default {
     },
   },
   methods: {
-    refreshProjectDetails() {
-      ProjectDataService.retrieveProject(this.id).then((res) => {
-        this.name = res.data.name;
+    refreshPostsDetails() {
+      PostDataService.retrievePost(this.id).then((res) => {
+        this.title = res.data.title;
         this.description = res.data.description;
-        this.imgUrl = res.data.imgUrl;
-        this.status = res.data.status;
+        this.project = res.data.project;
       });
     },
     validateAndSubmit(e) {
       e.preventDefault();
       this.errors = [];
       if (this.id == -1) {
-        ProjectDataService.createProject({
-          name: this.name,
+        PostDataService.createPost({
+          title: this.title,
           description: this.description,
-          imgUrl: this.imgUrl,
-          status: this.status,
+          project: this.project,
         }).then(() => {
-          this.$router.push("/projects");
+          this.$router.push("/admin");
         });
       } else {
-        ProjectDataService.updateProject(this.id, {
+        PostDataService.updatePost(this.id, {
           id: this.id,
-          name: this.name,
+          title: this.title,
           description: this.description,
-          imgUrl: this.imgUrl,
-          status: this.status,
+          project: this.project,
         }).then(() => {
-          this.$router.push("/projects");
+          this.$router.push("/admin");
         });
       }
     },
   },
   created() {
-    this.refreshProjectDetails();
+    this.refreshPostsDetails();
   },
 };
 </script>

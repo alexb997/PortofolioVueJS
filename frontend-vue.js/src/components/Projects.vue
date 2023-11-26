@@ -1,48 +1,18 @@
 <template>
   <div class="container">
     <h3>All Projects</h3>
-    <div v-if="message" class="alert alert-success">{{ this.message }}</div>
     <div class="container">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Image Url</th>
-            <th>Status</th>
-            <th>Update</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="project in projects" v-bind:key="project.id">
-            <td>{{ project.name }}</td>
-            <td>{{ project.description }}</td>
-            <td>{{ project.imgUrl }}</td>
-            <td>{{ project.status }}</td>
-            <td>
-              <button
-                class="btn btn-warning"
-                v-on:click="updateProject(project.id)"
-              >
-                Update
-              </button>
-            </td>
-            <td>
-              <button
-                class="btn btn-danger"
-                v-on:click="deleteProject(project.id)"
-              >
-                Delete
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="row">
-        <button class="btn btn-success" v-on:click="addProject()">Add</button>
+      <b-card-group deck v-for="i in Math.ceil(projects.length/2)" :key="i" >
+        <b-card v-for="project in projects.slice((i-1)*2, (i-1)*2 +  2)" v-bind:key="project.id" :title="project.name" :sub-title="project.status">
+          <b-card-text>
+            {{ project.description }}
+          </b-card-text>
+
+          <a :href="'/project/' + project.id" class="card-link">Details</a>
+          <!-- <b-link href="#" class="card-link">Github</b-link> -->
+        </b-card>
+      </b-card-group >
       </div>
-    </div>
   </div>
 </template>
 <script>
@@ -62,20 +32,16 @@ export default {
         this.projects = res.data;
       });
     },
-    addProject() {
-      this.$router.push(`/project/-1`);
-    },
-    updateProject(id) {
-      this.$router.push(`/project/${id}`);
-    },
-    deleteProject(id) {
-      ProjectDataService.deleteProject(id).then(() => {
-        this.refreshProjects();
-      });
-    },
   },
   created() {
     this.refreshProjects();
   },
 };
 </script>
+
+<style>
+a{
+  position: relative;
+  z-index: 1;
+}
+</style>

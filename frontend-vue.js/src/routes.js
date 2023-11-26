@@ -17,9 +17,29 @@ const router = new Router({
       component: () => import("./components/Project"),
     },
     {
+      path: "/Projects",
+      name: "Projects",
+      component: () => import("./components/Projects"),
+    },
+    {
       path: "/admin",
       name: "Admin",
       component: () => import("./components/Admin"),
+    },
+    {
+      path: "/admin/projects",
+      name: "AdminProjects",
+      component: () => import("./components/AdminProjects"),
+    },
+    {
+      path: "/admin/posts",
+      name: "AdminPosts",
+      component: () => import("./components/AdminPosts"),
+    },
+    {
+      path: "/Post/:id",
+      name: "Post",
+      component: () => import("./components/Post"),
     },
   ],
 });
