@@ -6,8 +6,9 @@
           <thead>
             <tr>
               <th>Title</th>
+              <th>Type</th>
               <th>Description</th>
-              <th>Project</th>
+              <th>Reference</th>
               <th>Update</th>
               <th>Delete</th>
             </tr>
@@ -15,8 +16,9 @@
           <tbody>
             <tr v-for="post in posts" v-bind:key="post.title">
               <td>{{ post.title }}</td>
+              <td>{{ post.type }}</td>
               <td>{{ post.description }}</td>
-              <td>{{ post.project }}</td>
+              <td>{{ post.reference }}</td>
               <td>
                 <button
                   class="btn btn-warning"
@@ -60,10 +62,10 @@
         });
       },
       addPost() {
-        this.$router.push(`/post/-1`);
+        this.$router.push(`/admin/post/-1`);
       },
       updatePost(id) {
-        this.$router.push(`/post/${id}`);
+        this.$router.push(`/admin/post/${id}`);
       },
       deletePost(id) {
         PostDataService.deletePost(id).then(() => {

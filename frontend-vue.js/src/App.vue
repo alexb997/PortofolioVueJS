@@ -1,6 +1,6 @@
 <template>
   <div class=" area">
-    <Col class="page">
+    <div class="page">
       <ul class="circles">
         <li></li>
         <li></li>
@@ -15,7 +15,7 @@
       </ul>
       <NavBar />
       <router-view />
-    </Col>
+    </div>
   </div>
 </template>
 

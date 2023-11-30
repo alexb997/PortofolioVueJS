@@ -17,12 +17,16 @@
           <input type="text" class="form-control" v-model="title" />
         </fieldset>
         <fieldset class="form-group">
+          <label>Type</label>
+          <input type="text" class="form-control" v-model="type" />
+        </fieldset>
+        <fieldset class="form-group">
           <label>Description</label>
           <input type="text" class="form-control" v-model="description" />
         </fieldset>
         <fieldset class="form-group">
-          <label>Project</label>
-          <input type="text" class="form-control" v-model="project" />
+          <label>Reference</label>
+          <input type="text" class="form-control" v-model="reference" />
         </fieldset>
         <button class="btn btn-success" type="submit">Save</button>
       </form>
@@ -38,7 +42,8 @@ export default {
     return {
       title: "",
       description: "",
-      project: "",
+      reference: "",
+      type:"",
       errors: [],
     };
   },
@@ -52,7 +57,8 @@ export default {
       PostDataService.retrievePost(this.id).then((res) => {
         this.title = res.data.title;
         this.description = res.data.description;
-        this.project = res.data.project;
+        this.reference = res.data.reference;
+        this.type = res.data.type;
       });
     },
     validateAndSubmit(e) {
@@ -62,7 +68,8 @@ export default {
         PostDataService.createPost({
           title: this.title,
           description: this.description,
-          project: this.project,
+          reference: this.reference,
+          type: this.type,
         }).then(() => {
           this.$router.push("/admin");
         });
@@ -71,7 +78,8 @@ export default {
           id: this.id,
           title: this.title,
           description: this.description,
-          project: this.project,
+          reference: this.reference,
+          type: this.type,
         }).then(() => {
           this.$router.push("/admin");
         });

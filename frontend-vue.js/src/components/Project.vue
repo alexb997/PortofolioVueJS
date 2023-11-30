@@ -21,8 +21,12 @@
           <input type="text" class="form-control" v-model="description" />
         </fieldset>
         <fieldset class="form-group">
-          <label>ImgUrl</label>
+          <label>ImgURL</label>
           <input type="text" class="form-control" v-model="imgUrl" />
+        </fieldset>
+        <fieldset class="form-group">
+          <label>GitURL</label>
+          <input type="text" class="form-control" v-model="gitUrl" />
         </fieldset>
         <fieldset class="form-group">
           <label>Status</label>
@@ -44,6 +48,7 @@ export default {
       description: "",
       imgUrl: "",
       status: "",
+      gitUrl: "",
       errors: [],
     };
   },
@@ -58,6 +63,7 @@ export default {
         this.name = res.data.name;
         this.description = res.data.description;
         this.imgUrl = res.data.imgUrl;
+        this.gitUrl = res.data.gitUrl;
         this.status = res.data.status;
       });
     },
@@ -70,6 +76,7 @@ export default {
           description: this.description,
           imgUrl: this.imgUrl,
           status: this.status,
+          gitUrl: this.gitUrl,
         }).then(() => {
           this.$router.push("/projects");
         });
@@ -80,6 +87,7 @@ export default {
           description: this.description,
           imgUrl: this.imgUrl,
           status: this.status,
+          gitUrl: this.gitUrl,
         }).then(() => {
           this.$router.push("/projects");
         });

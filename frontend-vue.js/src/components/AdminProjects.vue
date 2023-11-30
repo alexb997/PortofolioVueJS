@@ -8,6 +8,7 @@
               <th>Name</th>
               <th>Description</th>
               <th>Image Url</th>
+              <th>Git Url</th>
               <th>Status</th>
               <th>Update</th>
               <th>Delete</th>
@@ -19,6 +20,7 @@
               <td>{{ project.description }}</td>
               <td>{{ project.imgUrl }}</td>
               <td>{{ project.status }}</td>
+              <td>{{ project.gitUrl }}</td>
               <td>
                 <button
                   class="btn btn-warning"
@@ -62,10 +64,10 @@
         });
       },
       addProject() {
-        this.$router.push(`/project/-1`);
+        this.$router.push(`/admin/project/-1`);
       },
       updateProject(id) {
-        this.$router.push(`/project/${id}`);
+        this.$router.push(`/admin/project/${id}`);
       },
       deleteProject(id) {
         ProjectDataService.deleteProject(id).then(() => {

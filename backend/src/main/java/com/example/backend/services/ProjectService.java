@@ -43,6 +43,7 @@ public class ProjectService {
             .description(project.getDescription())
             .imgUrl(project.getImgUrl())
             .status(project.getStatus())
+            .gitUrl(project.getGitUrl())
             .build();
         return projectRepository.save(oldProject);
     }

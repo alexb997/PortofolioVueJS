@@ -12,12 +12,17 @@ const router = new Router({
       component: () => import("./components/Home"),
     },
     {
-      path: "/Projects",
+      path: "/projects",
       name: "Projects",
       component: () => import("./components/Projects"),
     },
     {
-      path: "/Project/:id",
+      path: "/blog",
+      name: "Blog",
+      component: () => import("./components/Blog"),
+    },
+    {
+      path: "/project/:id",
       name: "ProjectDetails",
       component: () => import("./components/ProjectDetails"),
     },
@@ -37,17 +42,17 @@ const router = new Router({
       component: () => import("./components/AdminPosts"),
     },
     {
-      path: "/admin/Project/:id",
+      path: "/admin/project/:id",
       name: "Project",
       component: () => import("./components/Project"),
     },
     {
-      path: "admin/Post/:id",
+      path: "/admin/post/:id",
       name: "Post",
       component: () => import("./components/Post"),
     },
     {
-      path: '/:pathMatch(.*)*',
+      path: "/:pathMatch(.*)*",
       name: "404",
       component: () => import("./components/404"),
     },

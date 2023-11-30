@@ -18,5 +18,7 @@ public class Post {
     private long id;
     private String title;
     private String description;
-    private String project;
+    private String type;
+    private String reference;
+
 }

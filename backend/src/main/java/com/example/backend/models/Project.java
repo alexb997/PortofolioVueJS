@@ -20,5 +20,5 @@ public class Project {
     private String description;
     private String imgUrl;
     private String status;
-            
+    private String gitUrl;
 }

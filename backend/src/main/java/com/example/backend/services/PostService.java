@@ -33,15 +33,12 @@ public class PostService {
     {
         
         Post oldPost = postRepository.findById(post.getId()).orElse(null);
-        // oldPost.setDescription(post.getDescription());
-        // oldPost.setName(post.getName());
-        // oldPost.setImgUrl(post.getImgUrl());
-        // oldPost.setStatus(post.getStatus());
         oldPost= Post.builder()
             .id(post.getId())
             .title(post.getTitle())
             .description(post.getDescription())
-            .project(post.getProject())
+            .reference(post.getReference())
+            .type(post.getType())
             .build();
         return postRepository.save(oldPost);
     }
