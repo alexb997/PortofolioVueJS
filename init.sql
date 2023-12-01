@@ -1,15 +1,17 @@
-CREATE TABLE Project (
+CREATE TABLE project (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
-  description VARCHAR(255),
+  name VARCHAR(255),
+  description TEXT,
   imgUrl VARCHAR(255),
-  gitUrl VARCHAR(255),
-  status VARCHAR(255)
+  status VARCHAR(255),
+  gitUrl VARCHAR(255)
 );
 CREATE TABLE post (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  title VARCHAR(255) NOT NULL,
-  description VARCHAR(255),
+  title VARCHAR(255),
+  description TEXT,
+  type VARCHAR(255),
   reference VARCHAR(255),
-  type VARCHAR(255)
+  project_id BIGINT,
+  FOREIGN KEY (project_id) REFERENCES project (id)
 );

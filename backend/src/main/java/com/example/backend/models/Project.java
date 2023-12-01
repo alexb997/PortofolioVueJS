@@ -1,5 +1,7 @@
 package com.example.backend.models;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,4 +23,6 @@ public class Project {
     private String imgUrl;
     private String status;
     private String gitUrl;
+    @OneToMany(mappedBy="project")
+    private List<Post> posts;
 }

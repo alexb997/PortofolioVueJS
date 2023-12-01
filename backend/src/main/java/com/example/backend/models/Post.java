@@ -20,5 +20,6 @@ public class Post {
     private String description;
     private String type;
     private String reference;
-
+    @ManyToOne(fetch=FetchType.LAZY)  
+    private Project project;  
 }

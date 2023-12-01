@@ -29,6 +29,7 @@ public class PostController
     @Autowired
     PostService postsService;
 
+    
     @GetMapping("/")
     public ResponseEntity<List<Post>> getAllPosts()
     {
