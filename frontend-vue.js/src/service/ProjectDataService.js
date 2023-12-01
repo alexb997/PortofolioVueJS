@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const PROJECT_API_URL = "http://localhost:8080/project";
+// const POST_API_URL = "http://localhost:8080/post";
 
 class ProjectDataService {
   retrieveAllProjects() {
@@ -9,6 +10,11 @@ class ProjectDataService {
 
   retrieveProject(id) {
     return axios.get(`${PROJECT_API_URL}/${id}`);
+    // axios.all([
+    // axios.get(`${PROJECT_API_URL}/${id}`),
+    // axios.get(`${POST_API_URL}/`),
+    // ]);'
+    // );
   }
 
   deleteProject(id) {

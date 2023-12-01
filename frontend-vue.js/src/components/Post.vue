@@ -43,7 +43,7 @@ export default {
       title: "",
       description: "",
       reference: "",
-      type:"",
+      type: "",
       errors: [],
     };
   },
@@ -93,7 +93,8 @@ export default {
 </script>
 
 <style>
-button, input{
+button,
+input {
   position: relative;
   z-index: 1;
 }
