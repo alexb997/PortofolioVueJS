@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header />
+    <Top />
     <Experience />
     <About />
     <Contact />
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Header from "./Header.vue";
+import Top from "./Top.vue";
 import Experience from "./Experience.vue";
 import Contact from "./Contact.vue";
 import About from "./About.vue";

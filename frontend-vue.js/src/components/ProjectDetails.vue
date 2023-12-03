@@ -17,7 +17,7 @@
         </div>
       </div>
       <h3>Related Posts</h3>
-      <!-- <div class="container">
+      <div class="container">
         <b-card-group deck v-for="i in Math.ceil(posts.length / 2)" :key="i">
           <b-card
             v-for="post in posts.slice((i - 1) * 2, (i - 1) * 2 + 2)"
@@ -30,7 +30,7 @@
             </b-card-text>
           </b-card>
         </b-card-group>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -46,7 +46,7 @@ export default {
       description: "",
       imgUrl: "",
       status: "",
-      // posts: [],
+      posts: [],
       errors: [],
       // message: "",
     };
@@ -63,6 +63,7 @@ export default {
         this.description = res.data.description;
         this.imgUrl = res.data.imgUrl;
         this.status = res.data.status;
+        this.posts = res.data.posts;
         // axios.spread(function(project, posts) {
         //   (project) => {
         //     this.name = project.data.name;

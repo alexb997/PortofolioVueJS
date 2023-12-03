@@ -1,5 +1,6 @@
 package com.example.backend.services;
 
+import com.example.backend.models.Post;
 import com.example.backend.models.Project;
 import com.example.backend.repository.ProjectRepository;
 

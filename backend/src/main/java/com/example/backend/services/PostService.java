@@ -19,6 +19,11 @@ public class PostService {
         return postRepository.findAll();
     }
 
+    public List<Post> getAllByProject(Long id)
+    {
+        return postRepository.findAllByProjectId(id);
+    }
+
     public Post getById(Long id)
     {
         return postRepository.findById(id).orElse(null);
