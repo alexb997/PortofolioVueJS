@@ -23,6 +23,6 @@ public class Project {
     private String imgUrl;
     private String status;
     private String gitUrl;
-    @OneToMany(mappedBy="project")
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Post> posts;
 }

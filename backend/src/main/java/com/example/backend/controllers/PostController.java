@@ -36,10 +36,10 @@ public class PostController
         return ResponseEntity.ok(postsService.getAll());
     }
 
-    @GetMapping("/")
+    @GetMapping("/reference/{id}")
     public ResponseEntity<List<Post>> getAllPostsbyProject(@PathVariable("id") Long id)
     {
-        return ResponseEntity.ok(postsService.getAllByProject(id));
+        return postsService.getAllByProject(id);
     }
 
     @GetMapping("/{id}")

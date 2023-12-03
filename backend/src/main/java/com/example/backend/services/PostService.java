@@ -4,6 +4,8 @@ import com.example.backend.models.Post;
 import com.example.backend.repository.PostRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,9 +21,14 @@ public class PostService {
         return postRepository.findAll();
     }
 
-    public List<Post> getAllByProject(Long id)
+    public ResponseEntity<List<Post>> getAllByProject(Long id)
     {
-        return postRepository.findAllByProjectId(id);
+        List<Post> posts = postRepository.findByProjectId(id);
+        if (posts.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity<>(posts, HttpStatus.OK);
     }
 
     public Post getById(Long id)
