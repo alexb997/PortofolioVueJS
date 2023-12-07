@@ -1,5 +1,7 @@
 package com.example.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,9 +9,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data 
+@Data
 @Builder
-@NoArgsConstructor 
+@NoArgsConstructor
 @AllArgsConstructor
 public class Post {
     
@@ -22,5 +24,6 @@ public class Post {
     private String reference;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id") 
+    @JsonBackReference // Add this annotation to break the circular reference
     private Project project;  
 }

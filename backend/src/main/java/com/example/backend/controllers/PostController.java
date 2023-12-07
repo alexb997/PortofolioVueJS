@@ -3,6 +3,7 @@ package com.example.backend.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,6 +30,8 @@ public class PostController
     @Autowired
     PostService postsService;
 
+    @Autowired
+    PostService postService;
     
     @GetMapping("/")
     public ResponseEntity<List<Post>> getAllPosts()
@@ -52,6 +55,20 @@ public class PostController
         }
 
         return ResponseEntity.ok(post);
+    }
+
+    @PutMapping("/{postId}/assign/{projectId}")
+    public ResponseEntity<Post> assignPostToProject(
+            @PathVariable Long postId,
+            @PathVariable Long projectId) {
+        
+        Post updatedPost = postService.assignPostToProject(postId, projectId);
+
+        if (updatedPost != null) {
+            return new ResponseEntity<>(updatedPost, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @DeleteMapping("/{id}")

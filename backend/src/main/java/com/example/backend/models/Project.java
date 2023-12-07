@@ -2,6 +2,8 @@ package com.example.backend.models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,5 +26,6 @@ public class Project {
     private String status;
     private String gitUrl;
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference // Add this annotation to break the circular reference
     private List<Post> posts;
 }

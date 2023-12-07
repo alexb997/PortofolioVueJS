@@ -15,7 +15,7 @@ import About from "./About.vue";
 
 export default {
   components: {
-    Header,
+    Top,
     Experience,
     Contact,
     About,

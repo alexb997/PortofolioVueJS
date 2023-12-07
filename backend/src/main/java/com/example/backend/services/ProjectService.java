@@ -34,10 +34,6 @@ public class ProjectService {
     {
         
         Project oldProject = projectRepository.findById(project.getId()).orElse(null);
-        // oldProject.setDescription(project.getDescription());
-        // oldProject.setName(project.getName());
-        // oldProject.setImgUrl(project.getImgUrl());
-        // oldProject.setStatus(project.getStatus());
         oldProject= Project.builder()
             .id(project.getId())
             .name(project.getName())
