@@ -17,7 +17,7 @@
         </div>
       </div>
       <h3>Related Posts</h3>
-      <div class="container">
+      <div class="container" v-if="posts && posts.length">
         <b-card-group deck v-for="i in Math.ceil(posts.length / 2)" :key="i">
           <b-card
             v-for="post in posts.slice((i - 1) * 2, (i - 1) * 2 + 2)"
@@ -36,7 +36,6 @@
 </template>
 <script>
 import ProjectDataService from "../service/ProjectDataService";
-// import axios from "axios";
 
 export default {
   name: "Project",
@@ -48,7 +47,6 @@ export default {
       status: "",
       posts: [],
       errors: [],
-      // message: "",
     };
   },
   computed: {
@@ -64,18 +62,6 @@ export default {
         this.imgUrl = res.data.imgUrl;
         this.status = res.data.status;
         this.posts = res.data.posts;
-        // axios.spread(function(project, posts) {
-        //   (project) => {
-        //     this.name = project.data.name;
-        //     this.description = project.data.description;
-        //     this.imgUrl = project.data.imgUrl;
-        //     this.status = project.data.status;
-        //     console.log(project.data);
-        //   };
-        //   (posts) => {
-        //     this.posts = posts.data;
-        //     console.log(posts.data);
-        //   };
       });
     },
   },

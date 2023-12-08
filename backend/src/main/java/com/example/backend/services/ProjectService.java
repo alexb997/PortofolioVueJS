@@ -22,7 +22,11 @@ public class ProjectService {
 
     public Project getById(Long id)
     {
-        return projectRepository.findById(id).orElse(null);
+        Project project = projectRepository.findByIdWithPosts(id).orElse(null);
+        if (project != null) {
+            project.getPosts().size(); // Explicitly fetch the posts
+        }
+        return project;
     }
 
     public Project create(Project project)
