@@ -47,17 +47,17 @@ public class PostService {
 
         return postRepository.save(post);
     }
-    
+    //Might change return type to boolean, true if succeeds, false if doesnt and exception handling for inexistent post/project
     public Post assignPostToProject(Long postId, Long projectId) {
-        Post post = postRepository.findById(postId).orElse(null);
-        Project project = projectService.getById(projectId);
-
-        if (post != null && project != null) {
+        Optional<Post> optionalPost = postRepository.findById(postId);
+        Optional<Project> optionalProject = projectService.getById(projectId);
+        if (optionalPost.isPresent() && optionalProject.isPresent()) {
+            Project project = optionalProject.get();
+            Post post = optionalPost.get();
             post.setProject(project);
             return postRepository.save(post);
         }
-
-        return null; //Optional.Empty() to be added. For now type missmatch
+        return null;
     }
 
     public Post update(Post post)

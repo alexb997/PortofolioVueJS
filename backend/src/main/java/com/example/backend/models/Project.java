@@ -26,6 +26,6 @@ public class Project {
     private String status;
     private String gitUrl;
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JsonBackReference 
     private List<Post> posts;
+
 }

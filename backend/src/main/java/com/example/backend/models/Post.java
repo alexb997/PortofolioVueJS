@@ -26,4 +26,5 @@ public class Post {
     @JoinColumn(name = "project_id") 
     @JsonBackReference 
     private Project project;  
+
 }

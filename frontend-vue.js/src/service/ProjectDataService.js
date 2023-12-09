@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const PROJECT_API_URL = "http://localhost:8080/project";
-// const POST_API_URL = "http://localhost:8080/post";
 
 class ProjectDataService {
   retrieveAllProjects() {
