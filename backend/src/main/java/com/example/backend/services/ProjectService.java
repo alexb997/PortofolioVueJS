@@ -1,6 +1,5 @@
 package com.example.backend.services;
 
-import com.example.backend.models.Post;
 import com.example.backend.models.Project;
 import com.example.backend.repository.ProjectRepository;
 
@@ -21,13 +20,9 @@ public class ProjectService {
         return projectRepository.findAll();
     }
 
-    public Project getById(Long id)
+    public Optional<Project> getById(Long id)
     {
-        Project project = projectRepository.findByIdWithPosts(id).orElse(null);
-        if (project != null) {
-            project.getPosts().size();
-        }
-        return project;
+        return projectRepository.findByIdWithPosts(id);
     }
 
     public Project create(Project project)
@@ -38,16 +33,22 @@ public class ProjectService {
     public Project update(Project project)
     {
         
-        Project oldProject = projectRepository.findById(project.getId()).orElse(null);
-        oldProject= Project.builder()
-            .id(project.getId())
-            .name(project.getName())
-            .description(project.getDescription())
-            .imgUrl(project.getImgUrl())
-            .status(project.getStatus())
-            .gitUrl(project.getGitUrl())
-            .build();
-        return projectRepository.save(oldProject);
+        Optional<Project> optionalOldProject = projectRepository.findById(project.getId());
+    
+        if (optionalOldProject.isPresent()) {
+            Project oldProject = optionalOldProject.get();
+            oldProject = Project.builder()
+                .id(project.getId())
+                .name(project.getName())
+                .description(project.getDescription())
+                .imgUrl(project.getImgUrl())
+                .status(project.getStatus())
+                .gitUrl(project.getGitUrl())
+                .build();
+            return projectRepository.save(oldProject);
+        }else{
+            return new Project();
+        }
     }
 
     public Long delete(Long id)

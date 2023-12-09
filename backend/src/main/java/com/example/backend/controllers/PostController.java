@@ -1,6 +1,7 @@
 package com.example.backend.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.backend.models.Post;
+import com.example.backend.models.Project;
 import com.example.backend.services.PostService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -48,13 +50,13 @@ public class PostController
     @GetMapping("/{id}")
     public ResponseEntity<Post>  getPosts(@PathVariable("id") Long id)
     {
-        Post post = postsService.getById(id);
-        if (post==null) {
+        Optional<Post> post = postService.getById(id);
+        if (!post.isPresent()) {
             log.error("Id " + id + " is not existed");
-            ResponseEntity.badRequest().build();
+            return ResponseEntity.notFound().build();
         }
 
-        return ResponseEntity.ok(post);
+        return ResponseEntity.ok(post.get());
     }
 
     @PutMapping("/{postId}/assign/{projectId}")

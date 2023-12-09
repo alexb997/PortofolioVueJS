@@ -1,6 +1,7 @@
 package com.example.backend.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,15 +37,15 @@ public class ProjectController
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Project>  getProjects(@PathVariable("id") Long id)
+    public ResponseEntity<Project>  getProject(@PathVariable("id") Long id)
     {
-        Project project = projectsService.getById(id);
-        if (project==null) {
+        Optional<Project> project = projectsService.getById(id);
+        if (!project.isPresent()) {
             log.error("Id " + id + " is not existed");
-            ResponseEntity.badRequest().build();
+            return ResponseEntity.notFound().build();
         }
 
-        return ResponseEntity.ok(project);
+        return ResponseEntity.ok(project.get());
     }
 
     @DeleteMapping("/{id}")

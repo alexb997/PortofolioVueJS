@@ -23,7 +23,7 @@
             v-for="post in posts.slice((i - 1) * 2, (i - 1) * 2 + 2)"
             v-bind:key="post.id"
             :title="post.title"
-            :sub-title="post.project"
+            :sub-title="post.type"
           >
             <b-card-text>
               {{ post.description }}
@@ -61,7 +61,7 @@ export default {
         this.description = res.data.description;
         this.imgUrl = res.data.imgUrl;
         this.status = res.data.status;
-        this.posts = res.data.posts;
+        this.posts = res.data.posts || [];
       });
     },
   },
