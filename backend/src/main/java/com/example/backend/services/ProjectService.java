@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProjectService {
@@ -24,7 +25,7 @@ public class ProjectService {
     {
         Project project = projectRepository.findByIdWithPosts(id).orElse(null);
         if (project != null) {
-            project.getPosts().size(); // Explicitly fetch the posts
+            project.getPosts().size();
         }
         return project;
     }

@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PostService {
@@ -27,10 +28,7 @@ public class PostService {
 
     public ResponseEntity<List<Post>> getAllByProject(Long id) {
         List<Post> posts = postRepository.findByProjectId(id);
-        
-        // // Ensure that the Project details are loaded
-        // posts.forEach(post -> System.out.println("AICI AI OUTPUT" +post.getProject().getName()));
-    
+
         if (posts.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -38,9 +36,8 @@ public class PostService {
         return new ResponseEntity<>(posts, HttpStatus.OK);
     }
 
-    public Post getById(Long id)
-    {
-        return postRepository.findById(id).orElse(null);
+    public Optional<Post> getById(Long id) {
+        return postRepository.findById(id);
     }
 
     public Post create(Post post)
@@ -60,7 +57,7 @@ public class PostService {
             return postRepository.save(post);
         }
 
-        return null; // Handle the case where either the post or the project doesn't exist
+        return null; //Optional.Empty() to be added. For now type missmatch
     }
 
     public Post update(Post post)

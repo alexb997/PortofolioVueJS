@@ -24,6 +24,6 @@ public class Post {
     private String reference;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id") 
-    @JsonBackReference // Add this annotation to break the circular reference
+    @JsonBackReference 
     private Project project;  
 }
