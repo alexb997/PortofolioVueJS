@@ -25,7 +25,7 @@ public class Project {
     private String imgUrl;
     private String status;
     private String gitUrl;
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonBackReference // Add this annotation to break the circular reference
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JsonBackReference 
     private List<Post> posts;
 }
