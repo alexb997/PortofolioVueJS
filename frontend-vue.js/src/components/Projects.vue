@@ -4,6 +4,7 @@
     <div class="container">
       <b-card-group deck v-for="i in Math.ceil(projects.length / 2)" :key="i">
         <b-card
+          class="bCard m-3"
           v-for="project in projects.slice((i - 1) * 2, (i - 1) * 2 + 2)"
           v-bind:key="project.id"
           :title="project.name"
@@ -48,5 +49,10 @@ export default {
 a {
   position: relative;
   z-index: 1;
+}
+
+.bCard {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.137);
 }
 </style>
