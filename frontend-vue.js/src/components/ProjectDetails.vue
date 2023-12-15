@@ -18,9 +18,10 @@
       </div>
       <h3>Related Posts</h3>
       <div class="container" v-if="posts && posts.length">
-        <b-card-group deck v-for="i in Math.ceil(posts.length / 2)" :key="i">
+        <b-col>
           <b-card
-            v-for="post in posts.slice((i - 1) * 2, (i - 1) * 2 + 2)"
+            class="m-3 bCard"
+            v-for="post in posts"
             v-bind:key="post.id"
             :title="post.title"
             :sub-title="post.type"
@@ -29,7 +30,7 @@
               {{ post.description }}
             </b-card-text>
           </b-card>
-        </b-card-group>
+        </b-col>
       </div>
     </div>
   </div>
@@ -82,5 +83,10 @@ input {
 .row {
   text-align: center;
   justify-content: center;
+}
+
+.bCard {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.137);
 }
 </style>

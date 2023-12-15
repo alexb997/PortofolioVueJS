@@ -1,6 +1,8 @@
 <template>
   <div class=" area">
     <div class="page">
+      <NavBar />
+      <router-view />
       <ul class="circles">
         <li></li>
         <li></li>
@@ -12,9 +14,10 @@
         <li></li>
         <li></li>
         <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
       </ul>
-      <NavBar />
-      <router-view />
     </div>
   </div>
 </template>
