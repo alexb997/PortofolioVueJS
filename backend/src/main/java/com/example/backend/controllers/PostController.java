@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.backend.models.Post;
-import com.example.backend.models.Project;
 import com.example.backend.services.PostService;
 
 import lombok.extern.slf4j.Slf4j;
