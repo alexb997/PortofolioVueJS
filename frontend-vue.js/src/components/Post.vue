@@ -28,6 +28,10 @@
           <label>Reference</label>
           <input type="text" class="form-control" v-model="reference" />
         </fieldset>
+        <fieldset class="form-group">
+          <label>{{ project }}</label>
+          <input type="text" class="form-control" />
+        </fieldset>
         <button class="btn btn-success" type="submit">Save</button>
       </form>
     </div>
@@ -44,6 +48,13 @@ export default {
       description: "",
       reference: "",
       type: "",
+      project: {
+        name: "",
+        description: "",
+        imgUrl: "",
+        status: "",
+        gitUrl: "",
+      },
       errors: [],
     };
   },
@@ -59,6 +70,8 @@ export default {
         this.description = res.data.description;
         this.reference = res.data.reference;
         this.type = res.data.type;
+        this.project = res.data.project;
+        console.log(this.project);
       });
     },
     validateAndSubmit(e) {
@@ -70,6 +83,7 @@ export default {
           description: this.description,
           reference: this.reference,
           type: this.type,
+          project: this.project,
         }).then(() => {
           this.$router.push("/admin");
         });
@@ -80,6 +94,7 @@ export default {
           description: this.description,
           reference: this.reference,
           type: this.type,
+          project: this.project,
         }).then(() => {
           this.$router.push("/admin");
         });
