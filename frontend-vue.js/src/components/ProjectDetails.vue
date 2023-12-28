@@ -35,7 +35,7 @@
     </div>
     <div>
       <h3>Add a post:</h3>
-      <a :href="'admin/posts'"
+      <a :href="this.id + `/addPost`"
         >Redirect(Adauga trimitere proiect la componenta creeare post)</a
       >
     </div>
