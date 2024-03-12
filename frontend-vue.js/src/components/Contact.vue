@@ -27,8 +27,8 @@
                 d="M7 10.444c0-1.545-0.051-2.836-0.102-3.951h3.594l0.178 1.723h0.076c0.506-0.811 1.746-2 3.822-2 2.532 0 4.432 1.695 4.432 5.342v7.442h-4v-6.861c0-1.594-0.607-2.81-2-2.81-1.062 0-1.594 0.86-1.873 1.569-0.102 0.254-0.127 0.608-0.127 0.963v7.139h-4v-8.556z"
               ></path>
             </svg>
-            linkedin </a
-          >
+            linkedin
+          </a>
           <a
             target="_blank"
             rel="noreferrer"
@@ -46,8 +46,8 @@
                 d="M16 0.395c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z"
               ></path>
             </svg>
-            github </a
-          >
+            github
+          </a>
           <a
             target="_blank"
             rel="noreferrer"
@@ -67,8 +67,63 @@
                 />
               </g>
             </svg>
-            facebook </a
-          >
+            facebook
+          </a>
+        </div>
+
+        <div>
+          <h2>Or send me a mail</h2>
+          <b-button variant="outline-primary" class="sendMailButton">
+            <b-icon icon="envelope"></b-icon>
+          </b-button>
+          <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+            <b-form-group
+              id="input-group-1"
+              label="Email address:"
+              label-for="input-1"
+              description="We'll never share your email with anyone else."
+            >
+              <b-form-input
+                id="input-1"
+                v-model="form.email"
+                type="email"
+                placeholder="Enter email"
+                required
+              ></b-form-input>
+            </b-form-group>
+
+            <b-form-group
+              id="input-group-2"
+              label="Your Name:"
+              label-for="input-2"
+            >
+              <b-form-input
+                id="input-2"
+                v-model="form.name"
+                placeholder="Enter name"
+                required
+              ></b-form-input>
+            </b-form-group>
+
+            <b-form-group
+              id="input-group-3"
+              label="Message:"
+              label-for="input-3"
+            >
+              <b-form-input
+                id="input-3"
+                v-model="form.message"
+                placeholder="Enter message"
+                required
+              ></b-form-input>
+            </b-form-group>
+
+            <b-button type="submit" variant="primary">Submit</b-button>
+            <b-button type="reset" variant="danger">Reset</b-button>
+          </b-form>
+          <!-- <b-card class="mt-3" header="Form Data Result">
+            <pre class="m-0">{{ form }}</pre>
+          </b-card> -->
         </div>
       </div>
     </Container>
@@ -81,6 +136,35 @@ import { Container } from "bootstrap-vue";
 export default {
   components: {
     Container,
+  },
+  data() {
+    return {
+      form: {
+        email: "",
+        name: "",
+        message: "",
+      },
+      show: true,
+    };
+  },
+  methods: {
+    onSubmit(event) {
+      event.preventDefault();
+      alert(JSON.stringify(this.form));
+    },
+    onReset(event) {
+      event.preventDefault();
+      // Reset our form values
+      this.form.email = "";
+      this.form.name = "";
+      this.form.food = null;
+      this.form.checked = [];
+      // Trick to reset/clear native browser form validation state
+      this.show = false;
+      this.$nextTick(() => {
+        this.show = true;
+      });
+    },
   },
 };
 </script>

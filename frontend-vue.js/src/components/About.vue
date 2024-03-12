@@ -3,11 +3,6 @@
     <Container fluid>
       <h2>About</h2>
       <p>About zone still unsure of content</p>
-
-      <div>
-        <h2>Or send me a mail:</h2>
-        <!-- <Button class="sendMailButton"></Button> -->
-      </div>
     </Container>
   </section>
 </template>
