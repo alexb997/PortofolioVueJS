@@ -121,9 +121,6 @@
             <b-button type="submit" variant="primary">Submit</b-button>
             <b-button type="reset" variant="danger">Reset</b-button>
           </b-form>
-          <!-- <b-card class="mt-3" header="Form Data Result">
-            <pre class="m-0">{{ form }}</pre>
-          </b-card> -->
         </div>
       </div>
     </Container>
@@ -154,12 +151,10 @@ export default {
     },
     onReset(event) {
       event.preventDefault();
-      // Reset our form values
       this.form.email = "";
       this.form.name = "";
       this.form.food = null;
       this.form.checked = [];
-      // Trick to reset/clear native browser form validation state
       this.show = false;
       this.$nextTick(() => {
         this.show = true;
