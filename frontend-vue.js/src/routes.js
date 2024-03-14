@@ -51,6 +51,12 @@ const router = new Router({
       name: "Post",
       component: () => import("./components/Post"),
     },
+
+    {
+      path: "/project/:id/addPost",
+      name: "Post",
+      component: () => import("./components/ProjectPost"),
+    },
     {
       path: "/:pathMatch(.*)*",
       name: "404",

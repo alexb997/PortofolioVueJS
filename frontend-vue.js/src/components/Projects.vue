@@ -1,17 +1,22 @@
 <template>
-  <div class="container">
+  <div class="container projects">
     <h3>All Projects</h3>
     <div class="container">
       <b-card-group deck v-for="i in Math.ceil(projects.length / 2)" :key="i">
         <b-card
+          img-top
           class="bCard m-3"
+          tag="project"
           v-for="project in projects.slice((i - 1) * 2, (i - 1) * 2 + 2)"
           v-bind:key="project.id"
           :title="project.name"
           :sub-title="project.status"
+          :img-src="project.imgUrl"
+          :img-alt="Image"
         >
           <b-card-text>
             {{ project.description }}
+            {{ project.imgUrl }}
           </b-card-text>
 
           <a :href="'/project/' + project.id" class="card-link">Details</a>
@@ -49,6 +54,10 @@ export default {
 a {
   position: relative;
   z-index: 1;
+}
+
+.projects {
+  min-height: 100vh;
 }
 
 .bCard {

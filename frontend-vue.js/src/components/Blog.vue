@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container posts">
     <h3>All Posts</h3>
     <div class="container">
       <b-card-group deck v-for="i in Math.ceil(posts.length / 2)" :key="i">
@@ -48,6 +48,10 @@ export default {
 a {
   position: relative;
   z-index: 1;
+}
+
+.projects {
+  min-height: 100vh;
 }
 
 .bCard {

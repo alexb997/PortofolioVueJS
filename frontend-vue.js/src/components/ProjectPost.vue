@@ -29,8 +29,8 @@
           <input type="text" class="form-control" v-model="reference" />
         </fieldset>
         <fieldset class="form-group">
-          <label>{{ project }}</label>
-          <input type="text" class="form-control" />
+          <label>Project_id</label>
+          <input type="text" class="form-control" v-model="id" />
         </fieldset>
         <button class="btn btn-success" type="submit">Save</button>
       </form>
@@ -66,7 +66,6 @@ export default {
         this.description = res.data.description;
         this.reference = res.data.reference;
         this.type = res.data.type;
-        this.project.id = this.id;
         console.log(this.project);
       });
     },
@@ -78,9 +77,11 @@ export default {
         description: this.description,
         reference: this.reference,
         type: this.type,
-        project: this.id,
+        project: {
+          id: this.id,
+        },
       }).then(() => {
-        this.$router.push("/admin");
+        this.$router.push(`/project/` + this.id);
       });
     },
   },
