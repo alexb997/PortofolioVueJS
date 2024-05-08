@@ -73,10 +73,14 @@
 
         <div>
           <h2>Or send me a mail</h2>
-          <b-button variant="outline-primary" class="sendMailButton">
+          <b-button
+            variant="outline-primary"
+            class="sendMailButton"
+            onclick="setNewValue()"
+          >
             <b-icon icon="envelope"></b-icon>
           </b-button>
-          <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+          <b-form @submit="onSubmit" @reset="onReset" v-if="value1">
             <b-form-group
               id="input-group-1"
               label="Email address:"
@@ -129,13 +133,16 @@
 
 <script>
 import { Container } from "bootstrap-vue";
-
+function setNewValue() {
+  value1 = true;
+}
 export default {
   components: {
     Container,
   },
   data() {
     return {
+      value1: false,
       form: {
         email: "",
         name: "",
