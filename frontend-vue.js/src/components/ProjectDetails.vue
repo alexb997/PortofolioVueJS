@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <div class="col">
+      <div class="col infoZone">
         <h3>{{ this.name }}</h3>
         <div class="row">
           <label>Name: {{ this.name }}</label>
@@ -32,6 +32,12 @@
           </b-card>
         </b-col>
       </div>
+    </div>
+    <div>
+      <h3>Add a post:</h3>
+      <a :href="this.id + `/addPost`"
+        >Redirect(Adauga trimitere proiect la componenta creeare post)</a
+      >
     </div>
   </div>
 </template>
@@ -83,9 +89,17 @@ input {
 .row {
   text-align: center;
   justify-content: center;
+  color: white;
 }
 
 .bCard {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.137);
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+
+.infoZone {
   color: white;
   background-color: rgba(0, 0, 0, 0.137);
 }

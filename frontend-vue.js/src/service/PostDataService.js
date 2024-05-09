@@ -22,6 +22,10 @@ class PostDataService {
   createPost(post) {
     return axios.post(`${POST_API_URL}/post`, post);
   }
+
+  assignPost(idPost,idProject) {
+    return axios.put(`${POST_API_URL}/${idPost}/assign/${idProject}`);
+  }
 }
 
 export default new PostDataService();
