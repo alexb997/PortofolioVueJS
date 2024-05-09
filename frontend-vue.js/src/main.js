@@ -2,6 +2,9 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./routes";
 import { BootstrapVue, BootstrapVueIcons } from "bootstrap-vue";
+import { Container } from 'bootstrap-vue';
+
+Vue.component('Container', Container);
 
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);

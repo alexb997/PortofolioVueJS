@@ -12,6 +12,7 @@
 import { Container, Row, Col } from "bootstrap-vue";
 
 export default {
+  name: "Top",
   components: {
     Container,
     Row,
