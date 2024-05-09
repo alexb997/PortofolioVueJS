@@ -71,16 +71,17 @@
           </a>
         </div>
 
+        <
         <div>
           <h2>Or send me a mail</h2>
           <b-button
             variant="outline-primary"
             class="sendMailButton"
-            onclick="setNewValue()"
+            @click="toggleFormVisibility"
           >
             <b-icon icon="envelope"></b-icon>
           </b-button>
-          <b-form @submit="onSubmit" @reset="onReset" v-if="value1">
+          <b-form v-if="value1" @submit="onSubmit" @reset="onReset">
             <b-form-group
               id="input-group-1"
               label="Email address:"
@@ -132,13 +133,14 @@
 </template>
 
 <script>
-import { Container } from "bootstrap-vue";
-function setNewValue() {
-  value1 = true;
-}
+import { Container, BButton, BForm, BIcon } from "bootstrap-vue";
+
 export default {
   components: {
     Container,
+    BButton,
+    BForm,
+    BIcon,
   },
   data() {
     return {
@@ -152,6 +154,9 @@ export default {
     };
   },
   methods: {
+    toggleFormVisibility() {
+      this.value1 = !this.value1;
+    },
     onSubmit(event) {
       event.preventDefault();
       alert(JSON.stringify(this.form));

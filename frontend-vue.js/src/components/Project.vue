@@ -13,24 +13,34 @@
           </div>
         </div>
         <fieldset class="form-group">
-          <label>Name</label>
-          <input type="text" class="form-control" v-model="name" />
-        </fieldset>
-        <fieldset class="form-group">
           <label>Description</label>
-          <input type="text" class="form-control" v-model="description" />
+          <input
+            type="text"
+            class="form-control"
+            v-model="description"
+            required
+          />
         </fieldset>
         <fieldset class="form-group">
           <label>ImgURL</label>
-          <input type="text" class="form-control" v-model="imgUrl" />
+          <input type="text" class="form-control" v-model="imgUrl" required />
+          <div v-if="!isValidUrl(imgUrl)" class="text-danger">
+            Invalid URL format
+          </div>
         </fieldset>
         <fieldset class="form-group">
           <label>GitURL</label>
-          <input type="text" class="form-control" v-model="gitUrl" />
+          <input type="text" class="form-control" v-model="gitUrl" required />
+          <div v-if="!isValidUrl(gitUrl)" class="text-danger">
+            Invalid URL format
+          </div>
         </fieldset>
         <fieldset class="form-group">
           <label>Status</label>
-          <input type="text" class="form-control" v-model="status" />
+          <select class="form-control" v-model="status" required>
+            <option value="Complete">Complete</option>
+            <option value="In Development">In Development</option>
+          </select>
         </fieldset>
         <button class="btn btn-success" type="submit">Save</button>
       </form>
@@ -47,7 +57,7 @@ export default {
       name: "",
       description: "",
       imgUrl: "",
-      status: "",
+      status: "Complete",
       gitUrl: "",
       errors: [],
     };
@@ -70,6 +80,14 @@ export default {
     validateAndSubmit(e) {
       e.preventDefault();
       this.errors = [];
+      if (!this.isValidUrl(this.imgUrl)) {
+        this.errors.push("Invalid URL format for ImgURL");
+        return;
+      }
+      if (!this.isValidUrl(this.gitUrl)) {
+        this.errors.push("Invalid URL format for GitURL");
+        return;
+      }
       if (this.id == -1) {
         ProjectDataService.createProject({
           name: this.name,
@@ -101,7 +119,8 @@ export default {
 </script>
 
 <style>
-button, input{
+button,
+input {
   position: relative;
   z-index: 1;
 }
