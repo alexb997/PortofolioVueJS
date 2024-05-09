@@ -1,114 +1,75 @@
-// package com.example.backend.controllerTest;
+package com.example.backend.controllerTest;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
-// import com.example.backend.models.Post;
-// import com.example.backend.services.PostService;
-// import org.junit.jupiter.api.Test;
-// import org.mockito.Mockito;
-// import org.assertj.core.api.Assertions;
-// import org.junit.jupiter.api.MethodOrderer;
-// import org.junit.jupiter.api.Order;
-// import org.junit.jupiter.api.Test;
-// import org.junit.jupiter.api.TestMethodOrder;
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-// import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-// import org.springframework.jdbc.core.JdbcTemplate;
-// import org.springframework.test.annotation.Rollback;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-// import static org.junit.jupiter.api.Assertions.assertEquals;
+import com.example.backend.controllers.PostController;
+import com.example.backend.models.Post;
+import com.example.backend.services.PostService;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
-// @DataJpaTest
-// @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-// public class CarControllerTest {
-//    @Autowired
-//    private MockMvc mockMvc;
+public class PostControllerTest {
 
-//    @MockBean
-//    private CarService carService;
+    @Mock
+    private PostService postServiceMock;
 
-//    Car mockCar = new Car("21xAT","Toyota");
+    @InjectMocks
+    private PostController postController;
 
-//    String exampleCarJson = "{\"plate\":\"21xAT\",\"manufacturer\":\"Toyota\",\"assured\":\"false\"}";
+    @SuppressWarnings("deprecation")
+@BeforeEach
+    void setUp() {
+        MockitoAnnotations.initMocks(this);
+    }
 
-//    @Test
-//    public void getCarByIdTest() throws Exception {
-//        Mockito.when(
-//                carService.findById(Mockito.anyString())).thenReturn(java.util.Optional.of(mockCar));
-//        RequestBuilder requestBuilder = MockMvcRequestBuilders.get(
-//                "/api/cars/61990f826a5e1f48302ef8d7").accept(
-//                MediaType.APPLICATION_JSON);
-//        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+    @Test
+    void testGetAllPosts() {
+        List<Post> posts = new ArrayList<>();
+        posts.add(new Post(1L, "Title 1", "Content 1", "test", "test", null));
+        posts.add(new Post(2L, "Title 2", "Content 2","test", "test", null));
 
-//        System.out.println(result.getResponse());
-//        String expected = "{plate:21xAT,manufacturer:Toyota,assured:false}";
+        when(postServiceMock.getAll()).thenReturn(posts);
 
-//        JSONAssert.assertEquals(expected, result.getResponse()
-//                .getContentAsString(), false);
-//    }
+        ResponseEntity<List<Post>> response = postController.getAllPosts();
 
-//    @Test
-//    public void createCarTest() throws Exception {
-//        Car mockCar = new Car("11xSS", "Ferrari");
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isEqualTo(posts);
+    }
 
-//        Mockito.when(carService.addNewCar(Mockito.any(Car.class))).thenReturn(mockCar);
+    @Test
+    void testSavePost() {
+        Post postToSave = new Post(2L, "Title 2", "Content 2","test", "test", null);
+        Post savedPost = new Post(2L, "Title 2", "Content 2","test", "test", null);
 
-//        RequestBuilder requestBuilder = MockMvcRequestBuilders
-//                .post("/api/cars")
-//                .accept(MediaType.APPLICATION_JSON).content(exampleCarJson)
-//                .contentType(MediaType.APPLICATION_JSON);
+        when(postServiceMock.create(any(Post.class))).thenReturn(savedPost);
 
-//        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-//        MockHttpServletResponse response = result.getResponse();
-//        assertEquals(HttpStatus.CREATED.value(), response.getStatus());
-//    }
+        ResponseEntity<Post> response = postController.savePost(postToSave);
 
-//    @Test
-//    public void deleteCarTest() throws Exception {
-//        Car mockCar = new Car("11xSS", "Ferrari");
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isEqualTo(savedPost);
+    }
 
-//        Mockito.when(carService.findById(Mockito.anyString()))
-//                .thenReturn(java.util.Optional.of(mockCar));
-//        RequestBuilder requestBuilder = MockMvcRequestBuilders
-//                .delete("/api/cars/61990f826a5e1f48302ef8d7")
-//                .contentType(MediaType.APPLICATION_JSON);
+    @Test
+    void testUpdatePost() {
+        Post postToUpdate = new Post(1L, "To update", "Content","test", "test", null);
+        Post updatedPost = new Post(1L, "Updated", "Updated Content","test", "test", null);
 
-//        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-//        MockHttpServletResponse response = result.getResponse();
-//        System.out.println("HERE!!!!!!!!-"+ response);
-//        assertEquals(204,response.getStatus());
-//    }
+        when(postServiceMock.update(any(Post.class))).thenReturn(updatedPost);
 
-//    @Test
-//    public void updateCarTest() throws Exception {
-//        Car mockCar = new Car("11xXT", "Dacia");
-//        Car mockCarUpdated = new Car("12xXT","Dacia");
-//        mockCarUpdated.setAssured(true);
-//        String mockStringCarUpdated ="{\"plate\":\"12xXT\",\"manufacturer\":\"Dacia\",\"assured\":\"true\"}";
+        ResponseEntity<Post> response = postController.updatePost(postToUpdate);
 
-//        Mockito.when(carService.findById(Mockito.anyString())).thenReturn(java.util.Optional.of(mockCar));
-//        Mockito.when(carService.updateCar(Mockito.any(Car.class))).thenReturn(mockCarUpdated);
-
-//        RequestBuilder requestBuilderGet = MockMvcRequestBuilders.get(
-//                "/api/cars/61990f826a5e1f48302ef8d7").accept(
-//                MediaType.APPLICATION_JSON);
-//        RequestBuilder requestBuilderPut = MockMvcRequestBuilders
-//                .put("/api/cars/61990f826a5e1f48302ef8d7")
-//                .accept(MediaType.APPLICATION_JSON).content(mockStringCarUpdated)
-//                .contentType(MediaType.APPLICATION_JSON);
-
-//        MvcResult resultGet = mockMvc.perform(requestBuilderGet).andReturn();
-//        System.out.println(resultGet.getResponse());
-//        String expected = "{plate:11xXT,manufacturer:Dacia,assured:false}";
-//        JSONAssert.assertEquals(expected, resultGet.getResponse()
-//                .getContentAsString(), false);
-
-//        MvcResult resultPut = mockMvc.perform(requestBuilderPut).andReturn();
-//        String expectedUpdate = "{plate:12xXT,manufacturer:Dacia,assured:true}";
-//        JSONAssert.assertEquals(expectedUpdate, resultPut.getResponse()
-//                .getContentAsString(),false);
-//    }
-// }
-// public class PostControllerTest {
-    
-// }
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isEqualTo(updatedPost);
+    }
+}
