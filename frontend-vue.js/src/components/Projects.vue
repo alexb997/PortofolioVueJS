@@ -2,13 +2,13 @@
   <div class="container projects">
     <h3>All Projects</h3>
     <div class="container">
-      <b-card-group deck v-for="i in Math.ceil(projects.length / 2)" :key="i">
+      <b-card-group deck v-for="page in Math.ceil(totalPages)">
         <b-card
           img-top
           class="bCard m-3"
           tag="project"
-          v-for="project in projects.slice((i - 1) * 2, (i - 1) * 2 + 2)"
-          v-bind:key="project.id"
+          v-for="project in currentPageProjects"
+          :key="project.id"
           :title="project.name"
           :sub-title="project.status"
           :img-src="project.imgUrl"
@@ -19,10 +19,11 @@
             {{ project.imgUrl }}
           </b-card-text>
 
-          <a :href="'/project/' + project.id" class="card-link">Details</a>
-          <!-- <b-link href="#" class="card-link">Github</b-link> -->
+          <router-link :to="'/project/' + project.id" class="card-link">Details</router-link>
+          <b-link href="#" class="card-link">Github</b-link>
         </b-card>
       </b-card-group>
+      <b-pagination v-model="currentPage" :total-rows="totalRows" :per-page="pageSize" @input="pageChanged" />
     </div>
   </div>
 </template>
@@ -34,14 +35,30 @@ export default {
   data() {
     return {
       projects: [],
+      currentPageProjects: [],
+      currentPage: 1,
+      pageSize: 7, 
+      totalRows: 0,
+      totalPages: 0,
       message: "",
     };
   },
   methods: {
     refreshProjects() {
-      ProjectDataService.retrieveAllProjects().then((res) => {
-        this.projects = res.data;
+      ProjectDataService.retrieveAllProjects({ page: this.currentPage, size: this.pageSize })
+      .then((response) => {
+        const responseData = response.data;
+        this.currentPageProjects = responseData.content;
+        this.totalRows = responseData.totalElements;
+        this.totalPages = responseData.totalPages;
+      })
+      .catch((error) => {
+        console.error("Error fetching projects:", error);
       });
+    },
+    pageChanged(newPage) {
+        this.currentPage = newPage;
+        this.refreshProjects();
     },
   },
   created() {
