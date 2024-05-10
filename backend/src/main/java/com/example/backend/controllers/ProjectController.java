@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,8 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.backend.models.Post;
 import com.example.backend.models.Project;
 import com.example.backend.services.ProjectService;
 
@@ -31,9 +36,18 @@ public class ProjectController
     ProjectService projectsService;
 
     @GetMapping("/")
-    public ResponseEntity<List<Project>> getAllProjects()
-    {
-        return ResponseEntity.ok(projectsService.getAll());
+    public ResponseEntity<List<Project>> getAllProjects(
+        @RequestParam(defaultValue = "1") int page,
+        @RequestParam(defaultValue = "10") int pageSize){
+            Pageable pageable = PageRequest.of(page - 1, pageSize); 
+            Page<Project> projectsPage = projectsService.getAll(pageable);
+
+            List<Project> projects = projectsPage.getContent();
+            if (projects.isEmpty()) {
+                return ResponseEntity.noContent().build();
+            }
+
+        return ResponseEntity.ok(projects);
     }
 
     @GetMapping("/{id}")
