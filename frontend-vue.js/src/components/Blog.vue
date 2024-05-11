@@ -2,10 +2,11 @@
   <div class="container posts">
     <h3>All Posts</h3>
     <div class="container">
-      <b-card-group deck v-for="i in Math.ceil(posts.length / 2)" :key="i">
+      <b-card-group deck v-for="page in Math.ceil(totalPages)">
         <b-card
           class="bCard m-3"
-          v-for="post in posts.slice((i - 1) * 2, (i - 1) * 2 + 2)"
+          tag="post"
+          v-for="post in currentPagePosts"
           v-bind:key="post.id"
           :title="post.title"
           :sub-title="post.project"
@@ -17,6 +18,12 @@
           <!-- <b-link href="#" class="card-link">Github</b-link> -->
         </b-card>
       </b-card-group>
+      <b-pagination
+        v-model="currentPage"
+        :total-rows="totalRows"
+        :per-page="pageSize"
+        @input="pageChanged"
+      />
     </div>
   </div>
 </template>
@@ -28,14 +35,33 @@ export default {
   data() {
     return {
       posts: [],
+      currentPagePosts: [],
+      currentPage: 1,
+      pageSize: 7,
+      totalRows: 0,
+      totalPages: 0,
       message: "",
     };
   },
   methods: {
     refreshPosts() {
-      PostDataService.retrieveAllPosts().then((res) => {
-        this.posts = res.data;
-      });
+      PostDataService.retrieveAllPosts({
+        page: this.currentPage,
+        size: this.pageSize,
+      })
+        .then((response) => {
+          const responseData = response.data;
+          this.currentPagePosts = responseData.content;
+          this.totalRows = responseData.totalElements;
+          this.totalPages = responseData.totalPages;
+        })
+        .catch((error) => {
+          console.error("Error fetching projects:", error);
+        });
+    },
+    pageChanged(newPage) {
+      this.currentPage = newPage;
+      this.refreshProjects();
     },
   },
   created() {

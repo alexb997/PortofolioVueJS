@@ -3,8 +3,13 @@ import axios from "axios";
 const POST_API_URL = "http://localhost:8080/post";
 
 class PostDataService {
-  retrieveAllPosts() {
-    return axios.get(`${POST_API_URL}/`);
+  retrieveAllPosts(page, pageSize) {
+    return axios.get(`${POST_API_URL}/`, {
+      params: {
+        page: page,
+        pageSize: pageSize,
+      },
+    });
   }
 
   retrievePost(id) {
@@ -23,7 +28,7 @@ class PostDataService {
     return axios.post(`${POST_API_URL}/post`, post);
   }
 
-  assignPost(idPost,idProject) {
+  assignPost(idPost, idProject) {
     return axios.put(`${POST_API_URL}/${idPost}/assign/${idProject}`);
   }
 }

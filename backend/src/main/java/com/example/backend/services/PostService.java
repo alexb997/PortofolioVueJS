@@ -28,15 +28,15 @@ public class PostService {
         return postRepository.findAll(pageable);
     }
 
-    public ResponseEntity<List<Post>> getAllByProject(Long id) {
-        List<Post> posts = postRepository.findByProjectId(id);
+    // public ResponseEntity<List<Post>> getAllByProject(Long id) {
+    //     List<Post> posts = postRepository.findByProjectId(id);
 
-        if (posts.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
+    //     if (posts.isEmpty()) {
+    //         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    //     }
     
-        return new ResponseEntity<>(posts, HttpStatus.OK);
-    }
+    //     return new ResponseEntity<>(posts, HttpStatus.OK);
+    // }
 
     public Optional<Post> getById(Long id) {
         return postRepository.findById(id);
