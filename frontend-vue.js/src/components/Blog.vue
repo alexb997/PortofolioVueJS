@@ -1,30 +1,24 @@
 <template>
   <div class="container posts">
     <h3>All Posts</h3>
-    <div class="container">
-      <b-card-group deck v-for="page in Math.ceil(totalPages)">
-        <b-card
-          class="bCard m-3"
-          tag="post"
-          v-for="post in currentPagePosts"
-          v-bind:key="post.id"
-          :title="post.title"
-          :sub-title="post.project"
-        >
-          <b-card-text>
-            {{ post.description }}
-          </b-card-text>
-          <!-- <a :href="'/post/' + post.id" class="card-link">Details</a> -->
-          <!-- <b-link href="#" class="card-link">Github</b-link> -->
-        </b-card>
-      </b-card-group>
-      <b-pagination
-        v-model="currentPage"
-        :total-rows="totalRows"
-        :per-page="pageSize"
-        @input="pageChanged"
-      />
+    <div class="row">
+      <div class="col-md-4" v-for="post in currentPagePosts" :key="post.id">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ post.type }}</h6>
+            <p class="card-text">{{ post.description }}</p>
+            <a :href="post.reference" class="card-link">Reference</a>
+          </div>
+        </div>
+      </div>
     </div>
+    <b-pagination
+      v-model="currentPage"
+      :total-rows="totalRows"
+      :per-page="pageSize"
+      @input="pageChanged"
+    />
   </div>
 </template>
 <script>
