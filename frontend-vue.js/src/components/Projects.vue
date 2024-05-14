@@ -1,18 +1,16 @@
 <template>
   <div class="container projects">
     <h3>All Projects</h3>
-    <div class="container">
-      <b-card-group deck>
+    <div class="row">
+      <div class="col-md-4" v-for="(project, index) in projects" :key="index">
         <b-card
           img-top
           class="bCard m-3"
           tag="project"
-          v-for="project in currentPageProjects"
-          :key="project.id"
           :title="project.name"
           :sub-title="project.status"
           :img-src="project.imgUrl"
-          :img-alt="Image"
+          :img-alt="project.name"
         >
           <b-card-text>
             {{ project.description }}
@@ -22,16 +20,18 @@
           <router-link :to="'/project/' + project.id" class="card-link"
             >Details</router-link
           >
-          <b-link href="#" class="card-link">Github</b-link>
+          <b-link :href="project.gitUrl" class="card-link" target="_blank"
+            >Github</b-link
+          >
         </b-card>
-      </b-card-group>
-      <b-pagination
-        v-model="currentPage"
-        :total-rows="totalRows"
-        :per-page="pageSize"
-        @input="pageChanged"
-      />
+      </div>
     </div>
+    <b-pagination
+      v-model="currentPage"
+      :total-rows="totalRows"
+      :per-page="pageSize"
+      @input="pageChanged"
+    />
   </div>
 </template>
 <script>
@@ -42,11 +42,10 @@ export default {
   data() {
     return {
       projects: [],
-      currentPageProjects: [],
       currentPage: 1,
       pageSize: 10,
-      totalRows: 2,
-      totalPages: 2,
+      totalRows: 1,
+      totalPages: 1,
       message: "",
     };
   },
@@ -55,7 +54,7 @@ export default {
       ProjectDataService.retrieveAllProjects(this.currentPage, this.pageSize)
         .then((response) => {
           const responseData = response.data;
-          this.currentPageProjects = responseData.content;
+          this.projects = responseData;
           this.totalRows = responseData.totalElements;
           this.totalPages = responseData.totalPages;
         })
