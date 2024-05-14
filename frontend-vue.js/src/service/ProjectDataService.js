@@ -3,8 +3,13 @@ import axios from "axios";
 const PROJECT_API_URL = "http://localhost:8080/project";
 
 class ProjectDataService {
-  retrieveAllProjects() {
-    return axios.get(`${PROJECT_API_URL}/`);
+  retrieveAllProjects(page, pageSize) {
+    return axios.get(`${PROJECT_API_URL}/`, {
+      params: {
+        page: page,
+        pageSize: pageSize,
+      },
+    });
   }
 
   retrieveProject(id) {
