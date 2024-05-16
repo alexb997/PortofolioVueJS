@@ -40,6 +40,7 @@
           <select class="form-control" v-model="status" required>
             <option value="Complete">Complete</option>
             <option value="In Development">In Development</option>
+            <option value="Canceled">Canceled</option>
           </select>
         </fieldset>
         <button class="btn btn-success" type="submit">Save</button>
