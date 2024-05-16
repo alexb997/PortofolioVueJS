@@ -24,16 +24,10 @@
         <fieldset class="form-group">
           <label>ImgURL</label>
           <input type="text" class="form-control" v-model="imgUrl" required />
-          <div v-if="!isValidUrl(imgUrl)" class="text-danger">
-            Invalid URL format
-          </div>
         </fieldset>
         <fieldset class="form-group">
           <label>GitURL</label>
           <input type="text" class="form-control" v-model="gitUrl" required />
-          <div v-if="!isValidUrl(gitUrl)" class="text-danger">
-            Invalid URL format
-          </div>
         </fieldset>
         <fieldset class="form-group">
           <label>Status</label>
@@ -76,19 +70,12 @@ export default {
         this.imgUrl = res.data.imgUrl;
         this.gitUrl = res.data.gitUrl;
         this.status = res.data.status;
+        console.log(this.name);
       });
     },
     validateAndSubmit(e) {
       e.preventDefault();
       this.errors = [];
-      if (!this.isValidUrl(this.imgUrl)) {
-        this.errors.push("Invalid URL format for ImgURL");
-        return;
-      }
-      if (!this.isValidUrl(this.gitUrl)) {
-        this.errors.push("Invalid URL format for GitURL");
-        return;
-      }
       if (this.id == -1) {
         ProjectDataService.createProject({
           name: this.name,
