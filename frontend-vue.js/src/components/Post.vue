@@ -89,11 +89,3 @@ export default {
   },
 };
 </script>
-
-<style>
-button,
-input {
-  position: relative;
-  z-index: 1;
-}
-</style>

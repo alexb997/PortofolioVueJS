@@ -74,11 +74,6 @@ export default {
 </script>
 
 <style>
-a {
-  position: relative;
-  z-index: 1;
-}
-
 .projects {
   min-height: 100vh;
 }
