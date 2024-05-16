@@ -1,3 +1,11 @@
+.area {
+  background: #060938;
+  color: wheat;
+  height: 100%;
+  text-align: center;
+}
+
+/* Home css */
 .home {
   display: flex;
   flex-direction: column;
@@ -70,4 +78,3 @@ section {
 .form-group {
   margin-bottom: 20px;
 }
-

@@ -1,23 +1,19 @@
 <template>
-  <div class="navigation">
-    <b-navbar toggleable="lg" type="dark" variant="dark">
+  <div>
+    <b-button v-b-toggle.sidebar-left>Toggle Sidebar</b-button>
+    <b-sidebar id="sidebar-left" title="Sidebar" left shadow>
       <b-navbar-brand href="#">Portofolio</b-navbar-brand>
 
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+      <b-navbar-nav>
+        <b-nav-item href="/">Home</b-nav-item>
+        <b-nav-item href="/projects">Projects</b-nav-item>
+        <b-nav-item href="/blog">Blog</b-nav-item>
+      </b-navbar-nav>
 
-      <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav>
-          <b-nav-item href="/">Home</b-nav-item>
-          <b-nav-item href="/projects">Projects</b-nav-item>
-          <b-nav-item href="/blog">Blog</b-nav-item>
-        </b-navbar-nav>
-
-        <!-- Right aligned nav items -->
-        <b-navbar-nav class="ml-auto">
-          <b-nav-item href="/admin">Admin</b-nav-item>
-        </b-navbar-nav>
-      </b-collapse>
-    </b-navbar>
+      <b-navbar-nav class="ml-auto">
+        <b-nav-item href="/admin">Admin</b-nav-item>
+      </b-navbar-nav>
+    </b-sidebar>
   </div>
 </template>
 
@@ -32,12 +28,8 @@ export default {
 </script>
 
 <style scoped>
-.navbar.navbar-dark.bg-dark {
-  background-color: rgba(0, 0, 0, 0.137) !important;
-}
 .navigation {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 1;
 }
 </style>

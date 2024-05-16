@@ -1,10 +1,10 @@
 <template>
-  <div >
+  <Container>
     <Top />
     <Experience />
     <About />
     <Contact />
-  </div>
+  </Container>
 </template>
 
 <script>
@@ -12,6 +12,7 @@ import Top from "./Top.vue";
 import Experience from "./Experience.vue";
 import Contact from "./Contact.vue";
 import About from "./About.vue";
+import { Container } from "bootstrap-vue";
 
 export default {
   components: {
@@ -22,7 +23,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-@import url(./home.css);
-</style>

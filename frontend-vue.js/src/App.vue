@@ -1,32 +1,21 @@
 <template>
-  <div class=" area">
-    <div class="page">
-      <ul class="circles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
+  <Container fluid>
+    <Row>
       <NavBar />
       <router-view />
-    </div>
-  </div>
+    </Row>
+  </Container>
 </template>
 
 <script>
 import NavBar from "./components/NavBar.vue";
+import { Container, Row } from "bootstrap-vue";
 
 export default {
   components: {
     NavBar,
+    Container,
+    Row,
   },
   name: "app",
 };
@@ -34,5 +23,5 @@ export default {
 
 <style>
 @import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);
-@import url(./App.css);
+@import url(./style/Global.css);
 </style>
