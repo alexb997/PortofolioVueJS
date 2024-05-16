@@ -2,7 +2,11 @@
   <div class="container posts">
     <h3>All Posts</h3>
     <div class="row">
-      <div class="col-md-4" v-for="post in currentPagePosts" :key="post.id">
+      <div
+        class="col-md-4"
+        v-for="(post, index) in currentPagePosts"
+        :key="index"
+      >
         <div class="card mb-3">
           <div class="card-body">
             <h5 class="card-title">{{ post.title }}</h5>
@@ -28,10 +32,9 @@ export default {
   name: "Posts",
   data() {
     return {
-      posts: [],
       currentPagePosts: [],
       currentPage: 1,
-      pageSize: 7,
+      pageSize: 2,
       totalRows: 0,
       totalPages: 0,
       message: "",
@@ -39,13 +42,10 @@ export default {
   },
   methods: {
     refreshPosts() {
-      PostDataService.retrieveAllPosts({
-        page: this.currentPage,
-        size: this.pageSize,
-      })
+      PostDataService.retrieveAllPosts(this.currentPage, this.pageSize)
         .then((response) => {
           const responseData = response.data;
-          this.currentPagePosts = responseData.content;
+          this.currentPagePosts = responseData;
           this.totalRows = responseData.totalElements;
           this.totalPages = responseData.totalPages;
         })
@@ -65,12 +65,8 @@ export default {
 </script>
 
 <style>
-a {
-  position: relative;
-  z-index: 1;
-}
 
-.projects {
+.posts {
   min-height: 100vh;
 }
 

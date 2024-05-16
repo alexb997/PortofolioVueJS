@@ -28,10 +28,10 @@
           <label>Reference</label>
           <input type="text" class="form-control" v-model="reference" />
         </fieldset>
-        <fieldset class="form-group">
+        <!-- <fieldset class="form-group">
           <label>{{ project }}</label>
           <input type="text" class="form-control" />
-        </fieldset>
+        </fieldset> -->
         <button class="btn btn-success" type="submit">Save</button>
       </form>
     </div>
@@ -49,7 +49,7 @@ export default {
       reference: "",
       type: "",
       project: {
-        id: "",
+        id: "1",
       },
       errors: [],
     };
@@ -89,11 +89,3 @@ export default {
   },
 };
 </script>
-
-<style>
-button,
-input {
-  position: relative;
-  z-index: 1;
-}
-</style>

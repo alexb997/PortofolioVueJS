@@ -70,8 +70,6 @@
             facebook
           </a>
         </div>
-
-        <
         <div>
           <h2>Or send me a mail</h2>
           <b-button

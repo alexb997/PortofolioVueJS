@@ -28,8 +28,4 @@
 .links{
     padding-top: 10vh;
 }
-a{
-    position: relative;
-    z-index: 1;
-}
 </style>
