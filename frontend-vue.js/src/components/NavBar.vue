@@ -1,5 +1,5 @@
 <template>
-  <div class="bd-sidebar border-bottom-0 col-md-3 col-xl-2 col-12 sideBar">
+  <div class="bd-sidebar container border-bottom-0 sideBar">
     <b-navbar-brand href="#">Portofolio</b-navbar-brand>
 
     <b-navbar-nav>
@@ -24,9 +24,3 @@ export default {
 };
 </script>
 
-<style scoped>
-.sideBar {
-  position: sticky;
-  height: 100vh;
-}
-</style>

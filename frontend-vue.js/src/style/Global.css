@@ -1,12 +1,20 @@
-.area {
-  background: #060938;
-  color: wheat;
-  height: 100%;
-  text-align: center;
+/* sides css*/
+
+.left-side {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  background-color: gainsboro;
+}
+.right-side {
+  text-align: left;
 }
 
+/* Sidebar css */
+
 /* Home css */
-.home {
+
+/* .home {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,4 +85,4 @@ section {
 
 .form-group {
   margin-bottom: 20px;
-}
+} */
