@@ -1,22 +1,10 @@
 <template>
-  <Container fluid>
-    <Row>
-      <NavBar />
-      <router-view />
-    </Row>
-  </Container>
+  <router-view />
 </template>
 
 <script>
-import NavBar from "./components/NavBar.vue";
-import { Container, Row } from "bootstrap-vue";
 
 export default {
-  components: {
-    NavBar,
-    Container,
-    Row,
-  },
   name: "app",
 };
 </script>

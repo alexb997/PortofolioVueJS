@@ -1,19 +1,16 @@
 <template>
-  <div>
-    <b-button v-b-toggle.sidebar-left>Toggle Sidebar</b-button>
-    <b-sidebar id="sidebar-left" title="Sidebar" left shadow>
-      <b-navbar-brand href="#">Portofolio</b-navbar-brand>
+  <div class="bd-sidebar border-bottom-0 col-md-3 col-xl-2 col-12 sideBar">
+    <b-navbar-brand href="#">Portofolio</b-navbar-brand>
 
-      <b-navbar-nav>
-        <b-nav-item href="/">Home</b-nav-item>
-        <b-nav-item href="/projects">Projects</b-nav-item>
-        <b-nav-item href="/blog">Blog</b-nav-item>
-      </b-navbar-nav>
+    <b-navbar-nav>
+      <b-nav-item href="/">Home</b-nav-item>
+      <b-nav-item href="/projects">Projects</b-nav-item>
+      <b-nav-item href="/blog">Blog</b-nav-item>
+    </b-navbar-nav>
 
-      <b-navbar-nav class="ml-auto">
-        <b-nav-item href="/admin">Admin</b-nav-item>
-      </b-navbar-nav>
-    </b-sidebar>
+    <b-navbar-nav class="ml-auto">
+      <b-nav-item href="/admin">Admin</b-nav-item>
+    </b-navbar-nav>
   </div>
 </template>
 
@@ -28,8 +25,8 @@ export default {
 </script>
 
 <style scoped>
-.navigation {
-  position: fixed;
-  top: 0;
+.sideBar {
+  position: sticky;
+  height: 100vh;
 }
 </style>
