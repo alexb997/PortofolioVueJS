@@ -1,9 +1,6 @@
 <template>
-  <section
-    id="Contact"
-    class="contact d-flex align-items-center justify-content-center"
-  >
-    <Container fluid>
+  <section id="Contact" class="contact ">
+    <b-container>
       <div>
         <h2>Find me on:</h2>
         <div>
@@ -126,16 +123,15 @@
           </b-form>
         </div>
       </div>
-    </Container>
+    </b-container>
   </section>
 </template>
 
 <script>
-import { Container, BButton, BForm, BIcon } from "bootstrap-vue";
+import { BButton, BForm, BIcon } from "bootstrap-vue";
 
 export default {
   components: {
-    Container,
     BButton,
     BForm,
     BIcon,

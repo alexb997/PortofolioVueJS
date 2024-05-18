@@ -54,7 +54,7 @@ const router = new Router({
 
     {
       path: "/project/:id/addPost",
-      name: "Post",
+      name: "AddPost",
       component: () => import("./components/ProjectPost"),
     },
     {

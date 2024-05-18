@@ -12,17 +12,15 @@ import Top from "./Top.vue";
 import Experience from "./Experience.vue";
 import Contact from "./Contact.vue";
 import About from "./About.vue";
+import NavBar from "./NavBar.vue";
 
 export default {
   components: {
     Top,
     Experience,
     Contact,
+    NavBar,
     About,
   },
 };
 </script>
-
-<style scoped>
-@import url(./home.css);
-</style>
