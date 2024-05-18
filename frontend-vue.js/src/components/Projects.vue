@@ -1,28 +1,35 @@
 <template>
-  <div class="container projects">
+  <div class="projects">
     <h3>All Projects</h3>
-    <div class="row">
-      <div class="col-md-4" v-for="(project, index) in projects" :key="index">
+    <div class="col">
+      <div class="p-2" v-for="(project, index) in projects" :key="index">
         <b-card
-          img-top
-          class="bCard m-3"
-          tag="project"
-          :title="project.name"
-          :sub-title="project.status"
-          :img-src="project.imgUrl"
-          :img-alt="project.name"
+          no-body
+          bg-variant="dark"
+          text-variant="white"
+          class="overflow-hidden project-card"
+          style="max-height: 300px;"
         >
-          <b-card-text>
-            {{ project.description }}
-            {{ project.imgUrl }}
-          </b-card-text>
-
-          <router-link :to="'/project/' + project.id" class="card-link"
-            >Details</router-link
-          >
-          <b-link :href="project.gitUrl" class="card-link" target="_blank"
-            >Github</b-link
-          >
+          <b-row no-gutters>
+            <b-col md="6">
+              <b-card-img
+                :src="project.imgUrl"
+                :alt="project.name"
+                class="rounded-0"
+              ></b-card-img>
+            </b-col>
+            <b-col md="6">
+              <b-card-body :title="project.name" :sub-title="project.status">
+                <hr />
+                <router-link :to="'/project/' + project.id" class="card-link"
+                  >Details</router-link
+                >
+                <b-link :href="project.gitUrl" class="card-link" target="_blank"
+                  >Github</b-link
+                >
+              </b-card-body>
+            </b-col>
+          </b-row>
         </b-card>
       </div>
     </div>
@@ -72,14 +79,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.projects {
-  min-height: 100vh;
-}
-
-.bCard {
-  color: white;
-  background-color: rgba(0, 0, 0, 0.137);
-}
-</style>
