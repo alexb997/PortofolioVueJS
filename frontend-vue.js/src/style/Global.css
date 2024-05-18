@@ -24,6 +24,24 @@
   height: 95%;
   overflow: hidden;
 }
+
+.button-nav {
+  width: 100%;
+}
+
+.button-nav:hover {
+  background-color: #1d232a;
+}
+
+.button-nav a {
+  color: #a7acbb;
+}
+
+.button-nav a:hover {
+  color: #a7acbb;
+  text-decoration: none;
+}
+
 .links-zone {
   justify-content: space-evenly;
   bottom: 0;
@@ -40,6 +58,11 @@
 }
 .project-card {
   width: 100%;
+}
+
+.project-card:hover {
+  transform: scale(1.01);
+  box-shadow: 5px 5px 5px rgb(0 0 0 / 70%);
 }
 /* .home {
   display: flex;
