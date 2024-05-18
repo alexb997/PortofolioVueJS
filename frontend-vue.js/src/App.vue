@@ -1,13 +1,11 @@
 <template>
-  <b-col>
-    <b-row class=" flex-xl-nowrap">
-      <b-col class="col-md-3 col-xl-2 col-12 left-side">
+  <b-col class="app">
+    <b-row class="flex-xl-nowrap">
+      <b-col class="col-md-4 col-xl-2 col-12 left-side ">
         <NavBar />
       </b-col>
-      <b-col
-        class="bd-content col-md-9 col-xl-8 col-12 pb-md-3 pl-md-5 right-side"
-      >
-        <b-container>
+      <b-col class="right-side">
+        <b-container fluid>
           <router-view />
         </b-container>
       </b-col>

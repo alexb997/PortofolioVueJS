@@ -1,10 +1,18 @@
 <template>
-  <div >
-    <Top />
-    <Experience />
-    <About />
-    <Contact />
-  </div>
+  <b-container>
+    <b-row class="mt-5 mb-4 p-3">
+      <Top />
+    </b-row>
+    <b-row class="mb-4 p-3">
+      <Experience />
+    </b-row>
+    <b-row class="mb-4 p-3">
+      <About />
+    </b-row>
+    <b-row class="mb-4 p-3">
+      <Contact />
+    </b-row>
+  </b-container>
 </template>
 
 <script>

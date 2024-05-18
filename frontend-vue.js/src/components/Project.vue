@@ -12,6 +12,11 @@
             {{ error }}
           </div>
         </div>
+
+        <fieldset class="form-group">
+          <label>Title</label>
+          <input type="text" class="form-control" v-model="name" required />
+        </fieldset>
         <fieldset class="form-group">
           <label>Description</label>
           <input
