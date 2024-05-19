@@ -58,9 +58,13 @@ const router = new Router({
       component: () => import("./components/ProjectPost"),
     },
     {
-      path: "/:pathMatch(.*)*",
+      path: "/404",
       name: "404",
       component: () => import("./components/404"),
+    },
+    {
+      path: "*",
+      redirect: "/404",
     },
   ],
 });

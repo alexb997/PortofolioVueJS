@@ -67,6 +67,16 @@
 .projects {
   width: 100%;
 }
+
+.projects a {
+  color: #a7acbb;
+}
+
+.projects a:hover {
+  color: #a7acbb;
+  text-decoration: none;
+}
+
 .project-card {
   width: 100%;
 }
@@ -75,6 +85,19 @@
   transform: scale(1.01);
   box-shadow: 5px 5px 5px rgb(0 0 0 / 70%);
 }
+
+.card-underbody {
+  height: 100%;
+}
+
+.card-link {
+  position: relative;
+  z-index: 9999;
+}
+.card-link:hover {
+  background-color: red;
+}
+
 /* .home {
   display: flex;
   flex-direction: column;
