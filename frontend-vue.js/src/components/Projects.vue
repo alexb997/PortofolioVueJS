@@ -21,9 +21,6 @@
             <b-col md="6">
               <b-card-body :title="project.name" :sub-title="project.status">
                 <hr />
-                <router-link :to="'/project/' + project.id" class="card-link"
-                  >Details</router-link
-                >
                 <b-link :href="project.gitUrl" class="card-link" target="_blank"
                   >Github</b-link
                 >

@@ -1,10 +1,28 @@
 <template>
   <b-container-fluid class="sideBar">
-    <div class=" buttons-zone pt-5">
-      <div class="button-nav pb-3"><a href="/">Home</a></div>
-      <div class="button-nav pb-3"><a href="/projects">Projects</a></div>
-      <div class="button-nav pb-3"><a href="/blog">Blog</a></div>
-    </div>
+    <ul class="overflow-y-auto buttons-zone pt-5">
+      <li class="container button-nav">
+        <a href="/">
+          <div class="row p-2">
+            <div class="col">Home</div>
+          </div>
+        </a>
+      </li>
+      <li class="container button-nav">
+        <a href="/projects">
+          <div class="row p-2">
+            <div class="col">Projects</div>
+          </div>
+        </a>
+      </li>
+      <li class="container button-nav">
+        <a href="/blog">
+          <div class="row p-2">
+            <div class="col">Blog</div>
+          </div>
+        </a>
+      </li>
+    </ul>
     <b-container class="links-zone">
       <b-row>
         <b-col>
