@@ -1,23 +1,24 @@
 <template>
   <div>
     <div class="container">
-      <div class="col infoZone">
+      <div class="col infoZone mt-5 mb-4">
+        <b-img :src="this.imgUrl" class="pt-4" fluid></b-img>
         <h3>{{ this.name }}</h3>
-        <div class="row">
+        <div class="row p-1">
           <label>Name: {{ this.name }}</label>
         </div>
-        <div class="row">
+        <div class="row p-1">
           <label>Description :{{ this.description }}</label>
         </div>
-        <div class="row">
+        <div class="row p-1">
           <label>ImgUrl :{{ this.imgUrl }}</label>
         </div>
-        <div class="row">
+        <div class="row p-1">
           <label>Status :{{ this.imgUrl }}</label>
         </div>
       </div>
       <h3>Related Posts</h3>
-      <div class="container" v-if="posts && posts.length">
+      <div class="container p-3" v-if="posts && posts.length">
         <b-col>
           <b-card
             class="m-3 bCard"
@@ -33,7 +34,7 @@
         </b-col>
       </div>
     </div>
-    <div>
+    <div class="pb-5">
       <h3>Add a post:</h3>
       <a :href="this.id + `/addPost`"
         >Redirect(Adauga trimitere proiect la componenta creeare post)</a
@@ -84,18 +85,15 @@ export default {
 .row {
   text-align: center;
   justify-content: center;
-  color: white;
 }
 
 .bCard {
-  color: white;
   background-color: rgba(0, 0, 0, 0.137);
   margin-top: 80px;
   margin-bottom: 40px;
 }
 
 .infoZone {
-  color: white;
   background-color: rgba(0, 0, 0, 0.137);
 }
 </style>
