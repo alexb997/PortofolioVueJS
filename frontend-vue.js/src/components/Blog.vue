@@ -22,7 +22,22 @@
                 <h5 class="card-title">{{ post.title }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{ post.type }}</h6>
                 <p class="card-text">{{ post.description }}</p>
-                <a :href="post.reference" class="card-link">Reference</a>
+                <hr />
+                <div class="container card-underbody">
+                  <b-row align-v="end" style="height: 100%;">
+                    <div class="container ">
+                      <div class="row p-2">
+                        <div class="col ">
+                          <a
+                            :href="`/project/${post.reference}`"
+                            class="card-link"
+                            ><span class="button-project p-2">Reference</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </b-row>
+                </div>
               </div>
             </b-col>
           </b-row>

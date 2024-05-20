@@ -26,11 +26,12 @@
         </fieldset>
         <fieldset class="form-group">
           <label>Reference</label>
-          <input type="text" class="form-control" v-model="reference" />
-        </fieldset>
-        <fieldset class="form-group">
-          <label>Project_id</label>
-          <input type="text" class="form-control" v-model="id" />
+          <input
+            disabled
+            type="text"
+            class="form-control"
+            v-model="reference"
+          />
         </fieldset>
         <button class="btn btn-success" type="submit">Save</button>
       </form>
@@ -56,6 +57,7 @@ export default {
   },
   computed: {
     id() {
+      this.reference = this.$route.params.id;
       return this.$route.params.id;
     },
   },
@@ -75,7 +77,7 @@ export default {
       PostDataService.createPost({
         title: this.title,
         description: this.description,
-        reference: this.reference,
+        reference: this.id,
         type: this.type,
         project: {
           id: this.id,
@@ -90,4 +92,3 @@ export default {
   },
 };
 </script>
-
