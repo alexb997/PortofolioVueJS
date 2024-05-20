@@ -2,14 +2,19 @@
   <div class="projects">
     <h3>All Projects</h3>
     <div class="col">
-      <div class="p-2" v-for="(project, index) in projects" :key="index">
+      <div
+        class="m-3"
+        v-for="(project, index) in projects"
+        :key="index"
+        style="height: 300px;"
+      >
         <router-link :to="`/project/${project.id}`">
           <b-card
             no-body
             bg-variant="dark"
             text-variant="white"
             class="overflow-hidden project-card"
-            style="max-height: 300px;"
+            style="height: 300px;"
           >
             <b-row no-gutters>
               <b-col md="6">
@@ -24,18 +29,17 @@
                   <hr />
                 </b-card-body>
                 <div class="container card-underbody">
-                  <div class="row-fluid">
-                    <b-col align-self="end"
-                      ><b-link
-                        :href="project.gitUrl"
-                        class="card-link"
-                        target="_blank"
-                        @click.stop
-                      >
-                        Github
-                      </b-link>
-                    </b-col>
-                  </div>
+                  <b-row align-v="end" style="height: 100%;">
+                    <div class="container ">
+                      <div class="row p-2">
+                        <div class="col ">
+                          <a :href="project.gitUrl" @click.stop
+                            ><span class="button-project p-2">GitHub</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </b-row>
                 </div>
               </b-col>
             </b-row>

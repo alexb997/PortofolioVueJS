@@ -87,7 +87,8 @@
 }
 
 .card-underbody {
-  height: 100%;
+  height: 150px;
+  text-align: right;
 }
 
 .card-link {
@@ -98,10 +99,16 @@
   background-color: red;
 }
 
-/* ProjectDetails css */
-.infoZone{
-  
+.button-project {
+  width: 100%;
 }
+
+.button-project:hover {
+  background-color: #1d232a;
+  border-radius: 7%;
+}
+
+/* ProjectDetails css */
 
 /* .home {
   display: flex;

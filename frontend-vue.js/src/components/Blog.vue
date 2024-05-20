@@ -1,22 +1,35 @@
 <template>
   <div class="container posts">
     <h3>All Posts</h3>
-    <div class="row">
+    <div class="col">
       <div
-        class="col-md-4"
+        class="m-3"
         v-for="(post, index) in currentPagePosts"
         :key="index"
+        style="height: 300px;"
       >
-        <div class="card mb-3">
-          <div class="card-body">
-            <h5 class="card-title">{{ post.title }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ post.type }}</h6>
-            <p class="card-text">{{ post.description }}</p>
-            <a :href="post.reference" class="card-link">Reference</a>
-          </div>
-        </div>
+        <b-card
+          no-body
+          bg-variant="dark"
+          text-variant="white"
+          class="overflow-hidden project-card"
+          style="height: 300px;"
+        >
+          <b-row no-gutters>
+            <b-col md="6"> </b-col>
+            <b-col md="6">
+              <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ post.type }}</h6>
+                <p class="card-text">{{ post.description }}</p>
+                <a :href="post.reference" class="card-link">Reference</a>
+              </div>
+            </b-col>
+          </b-row>
+        </b-card>
       </div>
     </div>
+
     <b-pagination
       v-model="currentPage"
       :total-rows="totalRows"
@@ -65,7 +78,6 @@ export default {
 </script>
 
 <style>
-
 .posts {
   min-height: 100vh;
 }
