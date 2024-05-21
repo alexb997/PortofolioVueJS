@@ -25,6 +25,10 @@
           <input type="text" class="form-control" v-model="description" />
         </fieldset>
         <fieldset class="form-group">
+          <label>ReferenceImg</label>
+          <input type="text" class="form-control" v-model="referenceImgUrl" />
+        </fieldset>
+        <fieldset class="form-group">
           <label>Reference</label>
           <input
             disabled
@@ -49,6 +53,7 @@ export default {
       description: "",
       reference: "",
       type: "",
+      referenceImgUrl: "",
       project: {
         id: "",
       },
@@ -67,6 +72,7 @@ export default {
         this.title = res.data.title;
         this.description = res.data.description;
         this.reference = res.data.reference;
+        this.referenceImgUrl = res.data.referenceImgUrl;
         this.type = res.data.type;
         console.log(this.project);
       });
@@ -78,6 +84,7 @@ export default {
         title: this.title,
         description: this.description,
         reference: this.id,
+        referenceImgUrl = res.data.referenceImgUrl;
         type: this.type,
         project: {
           id: this.id,

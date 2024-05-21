@@ -8,16 +8,20 @@
         :key="index"
         style="height: 300px;"
       >
-        <b-card
-          no-body
-          bg-variant="dark"
-          text-variant="white"
-          class="overflow-hidden project-card"
-          style="height: 300px;"
-        >
-          <b-row no-gutters>
-            <b-col md="6"> </b-col>
-            <b-col md="6">
+      <b-card
+            no-body
+            bg-variant="dark"
+            text-variant="white"
+            class="overflow-hidden project-card"
+            style="height: 300px;"
+          >
+            <b-row no-gutters>
+              <b-col md="6">
+                <b-card-img
+                  :src="post.referenceImgUrl"
+                  class="rounded-0"
+                ></b-card-img>
+              </b-col>
               <div class="card-body">
                 <h5 class="card-title">{{ post.title }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{ post.type }}</h6>

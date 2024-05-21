@@ -5,14 +5,11 @@ import com.example.backend.models.Project;
 import com.example.backend.repository.PostRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -39,6 +36,7 @@ public class PostService {
 
         return postRepository.save(post);
     }
+
     public Post assignPostToProject(Long postId, Long projectId) {
         Optional<Post> optionalPost = postRepository.findById(postId);
         Optional<Project> optionalProject = projectService.getById(projectId);
@@ -60,6 +58,7 @@ public class PostService {
             .title(post.getTitle())
             .description(post.getDescription())
             .reference(post.getReference())
+            .referenceImgUrl(post.getReferenceImgUrl())
             .type(post.getType())
             .build();
         return postRepository.save(oldPost);
