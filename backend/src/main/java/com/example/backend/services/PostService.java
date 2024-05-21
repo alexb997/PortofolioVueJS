@@ -28,16 +28,6 @@ public class PostService {
         return postRepository.findAll(pageable);
     }
 
-    // public ResponseEntity<List<Post>> getAllByProject(Long id) {
-    //     List<Post> posts = postRepository.findByProjectId(id);
-
-    //     if (posts.isEmpty()) {
-    //         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    //     }
-    
-    //     return new ResponseEntity<>(posts, HttpStatus.OK);
-    // }
-
     public Optional<Post> getById(Long id) {
         return postRepository.findById(id);
     }
@@ -49,7 +39,6 @@ public class PostService {
 
         return postRepository.save(post);
     }
-    //Might change return type to boolean, true if succeeds, false if doesnt and exception handling for inexistent post/project
     public Post assignPostToProject(Long postId, Long projectId) {
         Optional<Post> optionalPost = postRepository.findById(postId);
         Optional<Project> optionalProject = projectService.getById(projectId);

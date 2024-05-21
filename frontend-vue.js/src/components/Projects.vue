@@ -33,7 +33,7 @@
                     <div class="container ">
                       <div class="row p-2">
                         <div class="col ">
-                          <a :href="project.gitUrl" @click.stop
+                          <a :href="project.gitUrl" target="_blank" @click.stop
                             ><span class="button-project p-2">GitHub</span>
                           </a>
                         </div>
