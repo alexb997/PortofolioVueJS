@@ -22,7 +22,6 @@ public class Post {
     private String description;
     private String type;
     private String reference;
-    private String referenceImgUrl;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id") 
     @JsonBackReference 

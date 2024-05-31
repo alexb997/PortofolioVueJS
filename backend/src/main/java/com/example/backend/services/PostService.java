@@ -58,7 +58,6 @@ public class PostService {
             .title(post.getTitle())
             .description(post.getDescription())
             .reference(post.getReference())
-            .referenceImgUrl(post.getReferenceImgUrl())
             .type(post.getType())
             .build();
         return postRepository.save(oldPost);

@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  naem: "404",
+  name: "404",
 };
 </script>
 

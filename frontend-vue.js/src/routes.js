@@ -17,11 +17,6 @@ const router = new Router({
       component: () => import("./components/Projects"),
     },
     {
-      path: "/blog",
-      name: "Blog",
-      component: () => import("./components/Blog"),
-    },
-    {
       path: "/project/:id",
       name: "ProjectDetails",
       component: () => import("./components/ProjectDetails"),
